@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Thief</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>false</buildingRequired>
+	<apprenticeName>Accomplice</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Thief</professionTaught>
+	<resourceAdjustment name="Money" value="-3000" />
+	<resourceAdjustment name="Crime" value="1000" />
+</profession>

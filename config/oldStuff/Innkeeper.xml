@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Innkeeper</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Maid</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Innkeeper</professionTaught>
+	<resourceAdjustment name="Traffic" value="-300" />
+	<resourceAdjustment name="Money" value="300" />
+</profession>

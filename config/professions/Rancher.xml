@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Rancher</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Ranch hand</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Rancher</professionTaught>
+	<resourceAdjustment name="Milk" value="3000" />
+	<resourceAdjustment name="Cheese" value="3000" />
+	
+	<!-- Cows -->
+	<resourceAdjustment name="BulkMeat" value="300" />
+	<resourceAdjustment name="Horse" value="100" />
+	<resourceAdjustment name="Hide" value="600" />
+</profession>

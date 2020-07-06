@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Cobbler</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Cobbler</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Cobbler</professionTaught>
+	<resourceAdjustment name="Tool" value="-2" />
+	<resourceAdjustment name="Leather" value="-400" />
+	<resourceAdjustment name="Shoe" value="500" />
+</profession>

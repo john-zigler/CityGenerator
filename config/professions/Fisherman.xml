@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Fisherman</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>false</buildingRequired>
+	<apprenticeName>Apprentice Fisherman</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Fisherman</professionTaught>
+	<resourceAdjustment name="Fish" value="5000" />
+</profession>

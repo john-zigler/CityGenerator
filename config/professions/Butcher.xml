@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Butcher</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Butcher</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Butcher</professionTaught>
+	
+	<!-- Cows, Pigs, Sheep, Deer, etc. -->
+	<resourceAdjustment name="BulkMeat" value="-300" />
+	<resourceAdjustment name="Meat" value="7500" />
+</profession>

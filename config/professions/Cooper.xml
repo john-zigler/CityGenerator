@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Cooper</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Cooper</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Cooper</professionTaught>
+	<resourceAdjustment name="Tool" value="-2" />
+	<resourceAdjustment name="Coal" value="-200" />
+	<resourceAdjustment name="Iron Ingot" value="-200" />
+	<resourceAdjustment name="Wood" value="-1400" />
+	<resourceAdjustment name="Barrel" value="700" />
+</profession>

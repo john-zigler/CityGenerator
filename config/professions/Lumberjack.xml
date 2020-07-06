@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Lumberjack</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Lumberjack</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Lumberjack</professionTaught>
+	<resourceAdjustment name="Log" value="5000" />
+</profession>

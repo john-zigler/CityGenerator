@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Bakery</name>
+	<position>Baker</position>
+	<position>Baker</position>
+	<position>Baker</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Bakery</buildingType>
+		<noun>Bread</noun>
+		<noun>Biscuits</noun>
+		<noun>Cupcakes</noun>
+		<noun>Donuts</noun>
+		<adjective>Badass</adjective>
+		<adjective>Heavenly</adjective>
+		<namingConvention>%firstName%'s %adjective% %buildingType%</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%familyName% %noun%</namingConvention>
+		<namingConvention>%adjective% %noun% by %firstName%</namingConvention>
+		<namingConvention>%adjective% %noun%</namingConvention>
+		<namingConvention>%noun% &amp; Shit</namingConvention>
+	</namingRules>
+</buildingType>

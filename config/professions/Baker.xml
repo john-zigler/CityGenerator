@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Baker</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Baker</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Baker</professionTaught>
+	<resourceAdjustment name="Flour" value="-2000" />
+	<resourceAdjustment name="Egg" value="-1000" />
+	<resourceAdjustment name="Bread" value="15000" />
+</profession>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>House</name>
+	<namingRules>
+		<noun>House</noun>
+		<noun>Home</noun>
+		<namingConvention>%firstName%'s %noun%</namingConvention>
+		<namingConvention>%familyName% %noun%</namingConvention>
+		<namingConvention>%noun% of %firstName%</namingConvention>
+	</namingRules>
+</buildingType>

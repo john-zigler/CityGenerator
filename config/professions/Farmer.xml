@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Farmer</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Farmer</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Farmer</professionTaught>
+	<resourceAdjustment name="Grain" value="5000" />
+	<resourceAdjustment name="Vegetable" value="5000" />
+	<resourceAdjustment name="Chicken" value="2000" />
+	<resourceAdjustment name="Egg" value="4000" />
+	<!-- Pigs -->
+	<resourceAdjustment name="BulkMeat" value="150" />
+</profession>

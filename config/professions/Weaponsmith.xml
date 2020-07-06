@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Weaponsmith</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Weaponsmith</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Weaponsmith</professionTaught>
+	<resourceAdjustment name="Coal" value="-3000" />
+	<resourceAdjustment name="Iron Ingot" value="-3000" />
+	<resourceAdjustment name="Weapon" value="1000" />
+</profession>

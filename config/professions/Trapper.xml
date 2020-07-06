@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Trapper</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>false</buildingRequired>
+	<apprenticeName>Apprentice Trapper</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Trapper</professionTaught>
+	<resourceAdjustment name="Meat" value="600" />
+	<resourceAdjustment name="Fur" value="600" />
+</profession>

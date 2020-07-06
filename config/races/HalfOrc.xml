@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<race>
+	<name>Half-Orc</name>
+	<likelihood>3</likelihood>
+	<ageOfApprenticeship>14</ageOfApprenticeship>
+	<ageOfAdulthood>17</ageOfAdulthood>
+	<maxMatingAge>55</maxMatingAge>
+	<maxAge>90</maxAge>
+	<moveOutRate>0.33</moveOutRate>
+	<breedingRate>0.14</breedingRate>
+	<namingConvention>%firstName% of the %familyName% Tribe</namingConvention>
+	
+	<matingRace raceName="Human" offspringRaceName="Half-Orc" />
+	<matingRace raceName="Orc" offspringRaceName="Half-Orc" />
+	<matingRace raceName="Half-Orc" offspringRaceName="Half-Orc" />
+	
+	<maleName>Ganibark</maleName>
+	<maleName>Hurorth</maleName>
+	<maleName>Hogurimm</maleName>
+	<maleName>Zasorsh</maleName>
+	<maleName>Karogul</maleName>
+	<maleName>Orobash</maleName>
+	<maleName>Kruagash</maleName>
+	<maleName>Cradash</maleName>
+	<maleName>Ukerash</maleName>
+	<maleName>Urerth</maleName>
+	<maleName>Dask</maleName>
+	<maleName>Kilamarsh</maleName>
+	<maleName>Modark</maleName>
+	<maleName>Ronum</maleName>
+	<maleName>Durubak</maleName>
+	<maleName>Zoruburk</maleName>
+	<maleName>Throdar</maleName>
+	<maleName>Grumumir</maleName>
+	<maleName>Brakazar</maleName>
+	<maleName>Hurubak</maleName>
+	<maleName>Rekegash</maleName>
+	<maleName>Gnaatir</maleName>
+	<maleName>Koramir</maleName>
+	<maleName>Haromir</maleName>
+	<maleName>Zanar</maleName>
+	<maleName>Galemash</maleName>
+	<maleName>Okidak</maleName>
+	<maleName>Okarash</maleName>
+	<maleName>Zodark</maleName>
+	<maleName>Kruumar</maleName>
+	<maleName>Gnaabark</maleName>
+	<maleName>Thuranur</maleName>
+	<maleName>Ukremarsh</maleName>
+	<maleName>Hagam</maleName>
+	<maleName>Aggozall</maleName>
+	<maleName>Ullamir</maleName>
+	<maleName>Hagurall</maleName>
+	<maleName>Mahlegur</maleName>
+	<maleName>Butar</maleName>
+	<maleName>Throrall</maleName>
+	<maleName>Hanam</maleName>
+	<maleName>Lumubash</maleName>
+	<maleName>Kiludurk</maleName>
+	<maleName>Ronumash</maleName>
+	<maleName>Kalomir</maleName>
+	<maleName>Trukobak</maleName>
+	<maleName>Kruarash</maleName>
+	<maleName>Zavodash</maleName>
+	<maleName>Huradark</maleName>
+	<maleName>Ollirash</maleName>
+
+	<femaleName>Fulozira</femaleName>
+	<femaleName>Sunonur</femaleName>
+	<femaleName>Zonunir</femaleName>
+	<femaleName>Karenur</femaleName>
+	<femaleName>Zonuwar</femaleName>
+	<femaleName>Uragur</femaleName>
+	<femaleName>Zonogh</femaleName>
+	<femaleName>Temitar</femaleName>
+	<femaleName>Kirotar</femaleName>
+	<femaleName>Shiral</femaleName>
+	<femaleName>Mirumur</femaleName>
+	<femaleName>Kuraner</femaleName>
+	<femaleName>Zanozur</femaleName>
+	<femaleName>Rashuwar</femaleName>
+	<femaleName>Puyod</femaleName>
+	<femaleName>Vanari</femaleName>
+	<femaleName>Tuonur</femaleName>
+	<femaleName>Umenur</femaleName>
+	<femaleName>Rohoz</femaleName>
+	<femaleName>Felizi</femaleName>
+	<femaleName>Kerash</femaleName>
+	<femaleName>Rasorook</femaleName>
+	<femaleName>Riz</femaleName>
+	<femaleName>Bregu</femaleName>
+	<femaleName>Semushi</femaleName>
+	<femaleName>Kitur</femaleName>
+	<femaleName>Tamatah</femaleName>
+	<femaleName>Lagutur</femaleName>
+	<femaleName>Goridar</femaleName>
+	<femaleName>Elomira</femaleName>
+	<femaleName>Sinagar</femaleName>
+	<femaleName>Meresha</femaleName>
+	<femaleName>Rahkudar</femaleName>
+	<femaleName>Rasesh</femaleName>
+	<femaleName>Nuri</femaleName>
+	<femaleName>Rohkezar</femaleName>
+	<femaleName>Falogum</femaleName>
+	<femaleName>Vanoda</femaleName>
+	<femaleName>Puyinchu</femaleName>
+	<femaleName>Ubesh</femaleName>
+	<femaleName>Ekorook</femaleName>
+	<femaleName>Fulozi</femaleName>
+	<femaleName>Ootiner</femaleName>
+	<femaleName>Senamar</femaleName>
+	<femaleName>Game</femaleName>
+	<femaleName>Ubidar</femaleName>
+	<femaleName>Nazi</femaleName>
+	<femaleName>Puyone</femaleName>
+	<femaleName>Felozira</femaleName>
+	<femaleName>Shanar</femaleName>
+	
+	<familyName>Adams</familyName>
+	<familyName>Boettcher</familyName>
+	<familyName>Chaffins</familyName>
+	<familyName>Davis</familyName>
+	<familyName>Egal</familyName>
+	<familyName>Frederickson</familyName>
+	<familyName>Gurgitch</familyName>
+	<familyName>Hobbs</familyName>
+	<familyName>Ivanson</familyName>
+	<familyName>Jacobson</familyName>
+	<familyName>Kingsly</familyName>
+	<familyName>Levitt</familyName>
+	<familyName>McDaniels</familyName>
+	<familyName>Nestor</familyName>
+	<familyName>Orville</familyName>
+	<familyName>Peterson</familyName>
+	<familyName>Quill</familyName>
+	<familyName>Robinson</familyName>
+	<familyName>Smith</familyName>
+	<familyName>Thompson</familyName>
+	<familyName>Wrynn</familyName>
+	<familyName>Xerxes</familyName>
+	<familyName>Yentelstein</familyName>
+	<familyName>Zugschwert</familyName>
+	<familyName>Abbey</familyName>
+	<familyName>Arkwright</familyName>
+	<familyName>Aimar</familyName>
+	<familyName>Anderson</familyName>
+	<familyName>Atkinson</familyName>
+	<familyName>Atkins</familyName>
+	<familyName>Baker</familyName>
+	<familyName>Baxter</familyName>
+	<familyName>Bauer</familyName>
+	<familyName>Bell</familyName>
+	<familyName>Brewster</familyName>
+	<familyName>Bigge</familyName>
+	<familyName>Bennett</familyName>
+	<familyName>Blythe</familyName>
+	<familyName>Bonner</familyName>
+	<familyName>Brown</familyName>
+	<familyName>Bell</familyName>
+	<familyName>Bridge</familyName>
+	<familyName>Bryson</familyName>
+	<familyName>Chamberlain</familyName>
+	<familyName>Chandler</familyName>
+	<familyName>Chapman</familyName>
+	<familyName>Clarke</familyName>
+	<familyName>Collier</familyName>
+	<familyName>Cooper</familyName>
+	<familyName>Chance</familyName>
+	<familyName>Curtis</familyName>
+	<familyName>Cruikshank</familyName>
+	<familyName>Dempster</familyName>
+	<familyName>Dear</familyName>
+	<familyName>Devine</familyName>
+	<familyName>Daft</familyName>
+	<familyName>Dunn</familyName>
+	<familyName>Everett</familyName>
+	<familyName>Erickson</familyName>
+	<familyName>Fisher</familyName>
+	<familyName>Fox</familyName>
+	<familyName>Forest</familyName>
+	<familyName>Gardner</familyName>
+	<familyName>Grant</familyName>
+	<familyName>Grey</familyName>
+	<familyName>Harper</familyName>
+	<familyName>Hardy</familyName>
+	<familyName>Hawk</familyName>
+	<familyName>Hindman</familyName>
+	<familyName>Hughes</familyName>
+	<familyName>Hill</familyName>
+	<familyName>Jenner</familyName>
+	<familyName>Jameson</familyName>
+	<familyName>Johnson</familyName>
+	<familyName>Kemp</familyName>
+	<familyName>Koch</familyName>
+	<familyName>Kocher</familyName>
+	<familyName>Keen</familyName>
+	<familyName>Kennedy</familyName>
+	<familyName>Knapp</familyName>
+	<familyName>Lister</familyName>
+	<familyName>Lightfoot</familyName>
+	<familyName>Lancaster</familyName>
+	<familyName>Miller</familyName>
+	<familyName>Mannering</familyName>
+	<familyName>Moody</familyName>
+	<familyName>Mundy</familyName>
+	<familyName>Morrell</familyName>
+	<familyName>Meredith</familyName>
+	<familyName>Morrison</familyName>
+	<familyName>Norton</familyName>
+	<familyName>Packard</familyName>
+	<familyName>Page</familyName>
+	<familyName>Payne</familyName>
+	<familyName>Palmer</familyName>
+	<familyName>Parker</familyName>
+	<familyName>Porter</familyName>
+	<familyName>Peacock</familyName>
+	<familyName>Power</familyName>
+	<familyName>Pratt</familyName>
+	<familyName>Proude</familyName>
+	<familyName>Pruitt</familyName>
+	<familyName>Puttock</familyName>
+	<familyName>Park</familyName>
+	<familyName>Quick</familyName>
+	<familyName>Rolfe</familyName>
+	<familyName>Ryder</familyName>
+	<familyName>Rey</familyName>
+	<familyName>Rose</familyName>
+	<familyName>Russ</familyName>
+	<familyName>Root</familyName>
+	<familyName>Russell</familyName>
+	<familyName>Robertson</familyName>
+	<familyName>Rose</familyName>
+	<familyName>Saylor</familyName>
+	<familyName>Scrivens</familyName>
+	<familyName>Smith</familyName>
+	<familyName>Spinner</familyName>
+	<familyName>Steele</familyName>
+	<familyName>Stoddard</familyName>
+	<familyName>Swift</familyName>
+	<familyName>Selly</familyName>
+	<familyName>Sharp</familyName>
+	<familyName>Short</familyName>
+	<familyName>Sparks</familyName>
+	<familyName>Spear</familyName>
+	<familyName>Stern</familyName>
+	<familyName>Swann</familyName>
+	<familyName>Sweet</familyName>
+	<familyName>Sullivan</familyName>
+	<familyName>Simson</familyName>
+	<familyName>Shaw</familyName>
+	<familyName>Sommer</familyName>
+	<familyName>Taylor</familyName>
+	<familyName>Tinker</familyName>
+	<familyName>Toller</familyName>
+	<familyName>Tait</familyName>
+	<familyName>Terrell</familyName>
+	<familyName>Truman</familyName>
+	<familyName>Townsend</familyName>
+	<familyName>Tuft</familyName>
+	<familyName>Tracey</familyName>
+	<familyName>Wainwright</familyName>
+	<familyName>Walter</familyName>
+	<familyName>Ward</familyName>
+	<familyName>Webb</familyName>
+	<familyName>Wallace</familyName>
+	<familyName>Wild</familyName>
+	<familyName>Ware</familyName>
+	<familyName>Whitehead</familyName>
+	<familyName>Williamson</familyName>
+	<familyName>Yohe</familyName>
+	<familyName>York</familyName>
+	
+	<familyName>Misty Spider</familyName>
+	<familyName>Rapid Dagger</familyName>
+	<familyName>Lost Dragon</familyName>
+	<familyName>Pale Star</familyName>
+	<familyName>Evil Dagger</familyName>
+	<familyName>Steel Spider</familyName>
+	<familyName>Stone Ancestor</familyName>
+	<familyName>Murky Fox</familyName>
+	<familyName>Invincible Hill</familyName>
+	<familyName>Sapphire Ash</familyName>
+	<familyName>Murky Paw</familyName>
+	<familyName>Eternal Snake</familyName>
+	<familyName>Yellow Mammoth</familyName>
+	<familyName>Rabid Whisper</familyName>
+	<familyName>Risen Snow</familyName>
+	<familyName>Black Water</familyName>
+	<familyName>Angry Boulder</familyName>
+	<familyName>False Finger</familyName>
+	<familyName>Eternal Ant</familyName>
+	<familyName>Poison Wing</familyName>
+	<familyName>Small Whisper</familyName>
+	<familyName>Grave Wolf</familyName>
+	<familyName>Free Storm</familyName>
+	<familyName>High Stag</familyName>
+	<familyName>Infamous Swamp</familyName>
+	<familyName>Angry Woods</familyName>
+	<familyName>Brave Seer</familyName>
+	<familyName>Poison Ghost</familyName>
+	<familyName>Quiet Finger</familyName>
+	<familyName>Prime Bear</familyName>
+	<familyName>Clay Paw</familyName>
+	<familyName>Rising Aura</familyName>
+	<familyName>Silent Bear</familyName>
+	<familyName>Ancient Phoenix</familyName>
+	<familyName>Risen Storm</familyName>
+	<familyName>Silver Hawk</familyName>
+	<familyName>Clay Island</familyName>
+	<familyName>Small Moon</familyName>
+	<familyName>False Bison</familyName>
+	<familyName>Blessed God</familyName>
+	<familyName>Diamond Dragon</familyName>
+	<familyName>Nightmare Woods</familyName>
+	<familyName>Arctic Scorpion</familyName>
+	<familyName>Crazy Thunder</familyName>
+	<familyName>Red Eye</familyName>
+	<familyName>White Spider</familyName>
+	<familyName>Hell Fury</familyName>
+	<familyName>Ebon Bat</familyName>
+	<familyName>Brave Tower</familyName>
+	<familyName>Poison Snake</familyName>
+</race>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<race>
+	<name>Orc</name>
+	<likelihood>2</likelihood>
+	<ageOfApprenticeship>13</ageOfApprenticeship>
+	<ageOfAdulthood>16</ageOfAdulthood>
+	<maxMatingAge>50</maxMatingAge>
+	<maxAge>80</maxAge>
+	<moveOutRate>0.35</moveOutRate>
+	<breedingRate>0.15</breedingRate>
+	<namingConvention>%firstName% of the %familyName% Tribe</namingConvention>
+	
+	<matingRace raceName="Human" offspringRaceName="Half-Orc" />
+	<matingRace raceName="Orc" offspringRaceName="Orc" />
+	<matingRace raceName="Half-Orc" offspringRaceName="Orc" />
+	
+	<maleName>Ganibark</maleName>
+	<maleName>Hurorth</maleName>
+	<maleName>Hogurimm</maleName>
+	<maleName>Zasorsh</maleName>
+	<maleName>Karogul</maleName>
+	<maleName>Orobash</maleName>
+	<maleName>Kruagash</maleName>
+	<maleName>Cradash</maleName>
+	<maleName>Ukerash</maleName>
+	<maleName>Urerth</maleName>
+	<maleName>Dask</maleName>
+	<maleName>Kilamarsh</maleName>
+	<maleName>Modark</maleName>
+	<maleName>Ronum</maleName>
+	<maleName>Durubak</maleName>
+	<maleName>Zoruburk</maleName>
+	<maleName>Throdar</maleName>
+	<maleName>Grumumir</maleName>
+	<maleName>Brakazar</maleName>
+	<maleName>Hurubak</maleName>
+	<maleName>Rekegash</maleName>
+	<maleName>Gnaatir</maleName>
+	<maleName>Koramir</maleName>
+	<maleName>Haromir</maleName>
+	<maleName>Zanar</maleName>
+	<maleName>Galemash</maleName>
+	<maleName>Okidak</maleName>
+	<maleName>Okarash</maleName>
+	<maleName>Zodark</maleName>
+	<maleName>Kruumar</maleName>
+	<maleName>Gnaabark</maleName>
+	<maleName>Thuranur</maleName>
+	<maleName>Ukremarsh</maleName>
+	<maleName>Hagam</maleName>
+	<maleName>Aggozall</maleName>
+	<maleName>Ullamir</maleName>
+	<maleName>Hagurall</maleName>
+	<maleName>Mahlegur</maleName>
+	<maleName>Butar</maleName>
+	<maleName>Throrall</maleName>
+	<maleName>Hanam</maleName>
+	<maleName>Lumubash</maleName>
+	<maleName>Kiludurk</maleName>
+	<maleName>Ronumash</maleName>
+	<maleName>Kalomir</maleName>
+	<maleName>Trukobak</maleName>
+	<maleName>Kruarash</maleName>
+	<maleName>Zavodash</maleName>
+	<maleName>Huradark</maleName>
+	<maleName>Ollirash</maleName>
+	
+	<femaleName>Fulozira</femaleName>
+	<femaleName>Sunonur</femaleName>
+	<femaleName>Zonunir</femaleName>
+	<femaleName>Karenur</femaleName>
+	<femaleName>Zonuwar</femaleName>
+	<femaleName>Uragur</femaleName>
+	<femaleName>Zonogh</femaleName>
+	<femaleName>Temitar</femaleName>
+	<femaleName>Kirotar</femaleName>
+	<femaleName>Shiral</femaleName>
+	<femaleName>Mirumur</femaleName>
+	<femaleName>Kuraner</femaleName>
+	<femaleName>Zanozur</femaleName>
+	<femaleName>Rashuwar</femaleName>
+	<femaleName>Puyod</femaleName>
+	<femaleName>Vanari</femaleName>
+	<femaleName>Tuonur</femaleName>
+	<femaleName>Umenur</femaleName>
+	<femaleName>Rohoz</femaleName>
+	<femaleName>Felizi</femaleName>
+	<femaleName>Kerash</femaleName>
+	<femaleName>Rasorook</femaleName>
+	<femaleName>Riz</femaleName>
+	<femaleName>Bregu</femaleName>
+	<femaleName>Semushi</femaleName>
+	<femaleName>Kitur</femaleName>
+	<femaleName>Tamatah</femaleName>
+	<femaleName>Lagutur</femaleName>
+	<femaleName>Goridar</femaleName>
+	<femaleName>Elomira</femaleName>
+	<femaleName>Sinagar</femaleName>
+	<femaleName>Meresha</femaleName>
+	<femaleName>Rahkudar</femaleName>
+	<femaleName>Rasesh</femaleName>
+	<femaleName>Nuri</femaleName>
+	<femaleName>Rohkezar</femaleName>
+	<femaleName>Falogum</femaleName>
+	<femaleName>Vanoda</femaleName>
+	<femaleName>Puyinchu</femaleName>
+	<femaleName>Ubesh</femaleName>
+	<femaleName>Ekorook</femaleName>
+	<femaleName>Fulozi</femaleName>
+	<femaleName>Ootiner</femaleName>
+	<femaleName>Senamar</femaleName>
+	<femaleName>Game</femaleName>
+	<femaleName>Ubidar</femaleName>
+	<femaleName>Nazi</femaleName>
+	<femaleName>Puyone</femaleName>
+	<femaleName>Felozira</femaleName>
+	<femaleName>Shanar</femaleName>
+
+	<familyName>Misty Spider</familyName>
+	<familyName>Rapid Dagger</familyName>
+	<familyName>Lost Dragon</familyName>
+	<familyName>Pale Star</familyName>
+	<familyName>Evil Dagger</familyName>
+	<familyName>Steel Spider</familyName>
+	<familyName>Stone Ancestor</familyName>
+	<familyName>Murky Fox</familyName>
+	<familyName>Invincible Hill</familyName>
+	<familyName>Sapphire Ash</familyName>
+	<familyName>Murky Paw</familyName>
+	<familyName>Eternal Snake</familyName>
+	<familyName>Yellow Mammoth</familyName>
+	<familyName>Rabid Whisper</familyName>
+	<familyName>Risen Snow</familyName>
+	<familyName>Black Water</familyName>
+	<familyName>Angry Boulder</familyName>
+	<familyName>False Finger</familyName>
+	<familyName>Eternal Ant</familyName>
+	<familyName>Poison Wing</familyName>
+	<familyName>Small Whisper</familyName>
+	<familyName>Grave Wolf</familyName>
+	<familyName>Free Storm</familyName>
+	<familyName>High Stag</familyName>
+	<familyName>Infamous Swamp</familyName>
+	<familyName>Angry Woods</familyName>
+	<familyName>Brave Seer</familyName>
+	<familyName>Poison Ghost</familyName>
+	<familyName>Quiet Finger</familyName>
+	<familyName>Prime Bear</familyName>
+	<familyName>Clay Paw</familyName>
+	<familyName>Rising Aura</familyName>
+	<familyName>Silent Bear</familyName>
+	<familyName>Ancient Phoenix</familyName>
+	<familyName>Risen Storm</familyName>
+	<familyName>Silver Hawk</familyName>
+	<familyName>Clay Island</familyName>
+	<familyName>Small Moon</familyName>
+	<familyName>False Bison</familyName>
+	<familyName>Blessed God</familyName>
+	<familyName>Diamond Dragon</familyName>
+	<familyName>Nightmare Woods</familyName>
+	<familyName>Arctic Scorpion</familyName>
+	<familyName>Crazy Thunder</familyName>
+	<familyName>Red Eye</familyName>
+	<familyName>White Spider</familyName>
+	<familyName>Hell Fury</familyName>
+	<familyName>Ebon Bat</familyName>
+	<familyName>Brave Tower</familyName>
+	<familyName>Poison Snake</familyName>
+</race>

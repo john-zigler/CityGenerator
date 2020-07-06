@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Vintner</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Vintner</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Vintner</professionTaught>
+	<resourceAdjustment name="Fruit" value="300" />
+	<resourceAdjustment name="BulkWine" value="500" />
+</profession>

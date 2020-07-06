@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Shopkeep</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Assitant Shopkeep</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Shopkeep</professionTaught>
+	<resourceAdjustment name="Traffic" value="-300" />
+	<resourceAdjustment name="Tool" value="300" />
+	<resourceAdjustment name="Shoe" value="300" />
+	<resourceAdjustment name="Trade" value="3000" />
+</profession>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Sawmill</name>
+	<position>Sawyer</position>
+	<position>Sawyer</position>
+	<position>Sawyer</position>
+	<position>Sawyer</position>
+	<position>Sawyer</position>
+	<houseIncluded>false</houseIncluded>
+</buildingType>

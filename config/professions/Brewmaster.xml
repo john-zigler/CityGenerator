@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Brewmaster</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Brewmaster</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Brewmaster</professionTaught>
+	<resourceAdjustment name="Grain" value="-3000" />
+	<resourceAdjustment name="Vegetable" value="-3000" />
+	<resourceAdjustment name="Barrel" value="-600" />
+	<resourceAdjustment name="BulkBeer" value="3000" />
+	<resourceAdjustment name="BulkSpirit" value="3000" />
+</profession>

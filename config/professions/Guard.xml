@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Guard</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Watchman</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Guard</professionTaught>
+	<resourceAdjustment name="Citizen" value="-50" />
+	<resourceAdjustment name="Crime" value="-200" />
+	<resourceAdjustment name="Armor" value="-2" />
+	<resourceAdjustment name="Weapon" value="-2" />
+	<resourceAdjustment name="Security" value="1000" />
+</profession>

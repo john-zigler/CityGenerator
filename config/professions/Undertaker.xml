@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Undertaker</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Undertaker</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Undertaker</professionTaught>
+	<resourceAdjustment name="Grave" value="300" />
+</profession>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Miner</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Miner</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Miner</professionTaught>
+	<resourceAdjustment name="Coal" value="12000" />
+	<resourceAdjustment name="Iron Ore" value="6000" />
+	<resourceAdjustment name="Copper Ore" value="3000" />
+	<resourceAdjustment name="Silver Ore" value="2000" />
+	<resourceAdjustment name="Gold Ore" value="1500" />
+</profession>

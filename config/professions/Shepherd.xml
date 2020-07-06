@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Shepherd</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Shepherd</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Shepherd</professionTaught>
+	<resourceAdjustment name="BulkMeat" value="300" />
+	<resourceAdjustment name="Wool" value="6000" />
+</profession>

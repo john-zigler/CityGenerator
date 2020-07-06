@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Weaver</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Weaver</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Weaver</professionTaught>
+	<resourceAdjustment name="Wool" value="-4000" />
+	<resourceAdjustment name="Cloth" value="3000" />
+</profession>

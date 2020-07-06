@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Tavern</name>
+	<position>Tavernkeep</position>
+	<position>Tavernkeep</position>
+	<position>Bard</position>
+	<position>Bard</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Taphouse</buildingType>
+		<buildingType>Alehouse</buildingType>
+		<buildingType>Tavern</buildingType>
+		<buildingType>Inn</buildingType>
+		
+		<adjective>Amber</adjective>
+		<adjective>Ancient</adjective>
+		<adjective>Angry</adjective>
+		<adjective>Beached</adjective>
+		<adjective>Blue</adjective>
+		<adjective>Brown</adjective>
+		<adjective>Copper</adjective>
+		<adjective>Dancing</adjective>
+		<adjective>Ebony</adjective>
+		<adjective>Emerald</adjective>
+		<adjective>Fainting</adjective>
+		<adjective>Fattened</adjective>
+		<adjective>Golden</adjective>
+		<adjective>Green</adjective>
+		<adjective>Ivory</adjective>
+		<adjective>Orange</adjective>
+		<adjective>Purple</adjective>
+		<adjective>Red</adjective>
+		<adjective>Ruby</adjective>
+		<adjective>Salty</adjective>
+		<adjective>Sapphire</adjective>
+		<adjective>Silver</adjective>
+		<adjective>Sleeping</adjective>
+		<adjective>Sterling</adjective>
+		<adjective>Violet</adjective>
+		<adjective>Yellow</adjective>
+		<adjective>White</adjective>
+		
+		<noun>Anchor</noun>
+		<noun>Bat</noun>
+		<noun>Bush</noun>
+		<noun>Cat</noun>
+		<noun>Crown</noun>
+		<noun>Dog</noun>
+		<noun>Dragon</noun>
+		<noun>Fawn</noun>
+		<noun>Goat</noun>
+		<noun>Guppy</noun>
+		<noun>Horse</noun>
+		<noun>Manticore</noun>
+		<noun>Pig</noun>
+		<noun>Pitchfork</noun>
+		<noun>Rose</noun>
+		<noun>Sailor</noun>
+		<noun>Stag</noun>
+		<noun>Wench</noun>
+		<noun>Whistle</noun>
+		
+		<namingConvention>%firstName%'s</namingConvention>
+		<namingConvention>%firstName%'s %buildingType%</namingConvention>
+		<namingConvention>The %noun% &amp; %noun%</namingConvention>
+		<namingConvention>The %noun% &amp; %noun% %buildingType%</namingConvention>
+		<namingConvention>The %adjective% %noun%</namingConvention>
+		<namingConvention>The %adjective% %noun% %buildingType%</namingConvention>
+		<namingConvention>The %noun%</namingConvention>
+		<namingConvention>The %noun% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

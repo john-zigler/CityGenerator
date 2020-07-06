@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Beekeeper</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Beekeeper</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Beekeeper</professionTaught>
+	<resourceAdjustment name="Honey" value="3000" />
+	<resourceAdjustment name="Wax" value="3000" />
+</profession>

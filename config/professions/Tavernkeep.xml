@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Tavernkeep</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Server</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Tavernkeep</professionTaught>
+	<resourceAdjustment name="BulkBeer" value="-100" />
+	<resourceAdjustment name="BulkWine" value="-100" />
+	<resourceAdjustment name="BulkSpirit" value="-100" />
+	<resourceAdjustment name="Traffic" value="-100" />
+	<resourceAdjustment name="Beer" value="6000" />
+	<resourceAdjustment name="Wine" value="6000" />
+	<resourceAdjustment name="Spirit" value="6000" />
+	<resourceAdjustment name="Money" value="3000" />
+</profession>

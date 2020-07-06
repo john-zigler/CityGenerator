@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Mill</name>
+	<position>Miller</position>
+	<position>Miller</position>
+	<position>Miller</position>
+	<position>Miller</position>
+	<houseIncluded>true</houseIncluded>
+</buildingType>

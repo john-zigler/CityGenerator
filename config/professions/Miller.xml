@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Miller</name>
+	<minTrainingRequired>2</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Miller</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Miller</professionTaught>
+	<resourceAdjustment name="Grain" value="-8000" />
+	<resourceAdjustment name="Flour" value="8000" />
+</profession>

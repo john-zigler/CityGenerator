@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Artist</name>
+	<minTrainingRequired>0</minTrainingRequired>
+	<buildingRequired>false</buildingRequired>
+	<apprenticeName>Apprentice Artist</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Artist</professionTaught>
+	<resourceAdjustment name="Art" value="2000" />
+</profession>
