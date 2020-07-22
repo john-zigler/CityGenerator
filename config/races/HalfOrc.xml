@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <race>
 	<name>Half-Orc</name>
-	<likelihood>3</likelihood>
+	<likelihood>2</likelihood>
 	<ageOfApprenticeship>14</ageOfApprenticeship>
 	<ageOfAdulthood>17</ageOfAdulthood>
 	<maxMatingAge>55</maxMatingAge>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Scriptoria</name>
+	<position>Scribe</position>
+	<position>Scribe</position>
+	<position>Scribe</position>
+	<position>Scribe</position>
+	<position>Scribe</position>
+	<houseIncluded>true</houseIncluded>
+</buildingType>

@@ -11,5 +11,7 @@
 	<resourceAdjustment name="Crime" value="-200" />
 	<resourceAdjustment name="Armor" value="-2" />
 	<resourceAdjustment name="Weapon" value="-2" />
+	<resourceAdjustment name="Bow" value="-1" />
+	<resourceAdjustment name="Arrow" value="-10" />
 	<resourceAdjustment name="Security" value="1000" />
 </profession>

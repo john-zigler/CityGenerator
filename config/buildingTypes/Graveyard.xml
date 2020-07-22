@@ -3,4 +3,8 @@
 <buildingType>
 	<name>Graveyard</name>
 	<position>Undertaker</position>
+	<namingRules>
+		<buildingType>Cemetary</buildingType>
+		<namingConvention>%cityName% %buildingType%</namingConvention>
+	</namingRules>
 </buildingType>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Carpentry</name>
+	<position>Carpenter</position>
+	<position>Carpenter</position>
+	<position>Carpenter</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Carpentry</buildingType>
+		<buildingType>Woodworks</buildingType>
+		<noun>Furniture</noun>
+		<noun>Cabinets</noun>
+		<noun>Chairs</noun>
+		<noun>Chests</noun>
+		<adjective>Badass</adjective>
+		<adjective>Fine</adjective>
+		<adjective>Marvelous</adjective>
+		<adjective>Wonderful</adjective>
+		<namingConvention>%firstName%'s %adjective% %buildingType%</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%familyName% %noun%</namingConvention>
+		<namingConvention>%adjective% %noun% by %firstName%</namingConvention>
+		<namingConvention>%adjective% %noun%</namingConvention>
+		<namingConvention>%noun% &amp; Shit</namingConvention>
+	</namingRules>
+</buildingType>

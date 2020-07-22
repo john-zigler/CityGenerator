@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE xml>
 <buildingType>
-	<name>Candle Shop</name>
-	<position>Candlemaker</position>
-	<position>Candlemaker</position>
-	<position>Candlemaker</position>
+	<name>Accounting Office</name>
+	<position>Accountant</position>
+	<position>Accountant</position>
+	<position>Accountant</position>
 	<houseIncluded>true</houseIncluded>
 </buildingType>

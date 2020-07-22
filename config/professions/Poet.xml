@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Poet</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>false</buildingRequired>
+	<apprenticeName>Apprentice Poet</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Poet</professionTaught>
+	<resourceAdjustment name="Paper" value="-500" />
+	<resourceAdjustment name="Poetry" value="5000" />
+</profession>

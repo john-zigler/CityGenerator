@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE xml>
 <profession>
-	<name>Candlemaker</name>
+	<name>Chandler</name>
 	<minTrainingRequired>2</minTrainingRequired>
 	<buildingRequired>true</buildingRequired>
-	<apprenticeName>Apprentice Candlemaker</apprenticeName>
+	<apprenticeName>Apprentice Chandler</apprenticeName>
 	<numberOfApprentices>2</numberOfApprentices>
-	<professionTaught>Candlemaker</professionTaught>
+	<professionTaught>Chandler</professionTaught>
 	<resourceAdjustment name="Wax" value="-3000" />
 	<resourceAdjustment name="Candle" value="3000" />
+	<resourceAdjustment name="Soap" value="3000" />
 </profession>

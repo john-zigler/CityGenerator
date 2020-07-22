@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Papermaker</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Papermaker</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Papermaker</professionTaught>
+	<resourceAdjustment name="Wood" value="-500" />
+	<resourceAdjustment name="Paper" value="15000" />
+</profession>

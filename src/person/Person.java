@@ -659,8 +659,8 @@ public class Person {
 			}
 			this.setHome(newHome, true);
 			spouse.setHome(newHome, true);
-//			System.out.println(this + " MARRIED " + spouse);
 			events.add(new Event("Married " + spouse));
+			spouse.events.add(new Event("Married " + this));
 			if (gender.equals(Gender.Male)) {
 				spouse.setFamilyName(familyName);
 			} else {

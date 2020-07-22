@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Actor</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Understudy</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Actor</professionTaught>
+	<resourceAdjustment name="Opportunity" value="-100" />
+	<resourceAdjustment name="Money" value="-100" />
+	<resourceAdjustment name="Entertainment" value="200" />
+	<resourceAdjustment name="Traffic" value="200" />
+	<resourceAdjustment name="Chaos" value="1000" />
+</profession>

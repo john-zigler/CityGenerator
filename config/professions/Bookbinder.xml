@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Bookbinder</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Bookbinder</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Bookbinder</professionTaught>
+	<resourceAdjustment name="Paper" value="-5000" />
+	<resourceAdjustment name="Leather" value="-500" />
+	<resourceAdjustment name="Blank Book" value="1000" />
+</profession>

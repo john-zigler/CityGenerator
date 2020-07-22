@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Accountant</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Accountant</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Accountant</professionTaught>
+	<resourceAdjustment name="Financial Advice" value="500" />
+</profession>

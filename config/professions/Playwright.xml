@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Playwright</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>false</buildingRequired>
+	<apprenticeName>Apprentice Playwright</apprenticeName>
+	<numberOfApprentices>1</numberOfApprentices>
+	<professionTaught>Playwright</professionTaught>
+	<resourceAdjustment name="Paper" value="-500" />
+	<resourceAdjustment name="Play script" value="5000" />
+</profession>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Mason</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Mason</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Mason</professionTaught>
+	<resourceAdjustment name="RawStone" value="-2000" />
+	<resourceAdjustment name="Stone" value="2000" />
+</profession>

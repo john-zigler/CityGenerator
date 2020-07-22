@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE xml>
 <profession>
-	<name>Bard</name>
+	<name>Minstrel</name>
 	<minTrainingRequired>0</minTrainingRequired>
 	<buildingRequired>false</buildingRequired>
-	<apprenticeName>Apprentice Bard</apprenticeName>
+	<apprenticeName>Apprentice Minstrel</apprenticeName>
 	<numberOfApprentices>2</numberOfApprentices>
-	<professionTaught>Bard</professionTaught>
+	<professionTaught>Minstrel</professionTaught>
 	<resourceAdjustment name="Money" value="-100" />
-	<resourceAdjustment name="Entertainment" value="100" />
-	<resourceAdjustment name="Traffic" value="100" />
+	<resourceAdjustment name="Entertainment" value="200" />
+	<resourceAdjustment name="Traffic" value="200" />
 </profession>

@@ -7,6 +7,8 @@
 	<apprenticeName>Apprentice Hunter</apprenticeName>
 	<numberOfApprentices>1</numberOfApprentices>
 	<professionTaught>Hunter</professionTaught>
+	<resourceAdjustment name="Bow" value="-1" />
+	<resourceAdjustment name="Arrow" value="-100" />
 	
 	<!-- Deer, etc. -->
 	<resourceAdjustment name="BulkMeat" value="600" />

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Quarry</name>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<position>Quarrier</position>
+	<houseIncluded>false</houseIncluded>
+</buildingType>

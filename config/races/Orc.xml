@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <race>
 	<name>Orc</name>
-	<likelihood>2</likelihood>
+	<likelihood>1</likelihood>
 	<ageOfApprenticeship>13</ageOfApprenticeship>
 	<ageOfAdulthood>16</ageOfAdulthood>
 	<maxMatingAge>50</maxMatingAge>

@@ -23,7 +23,7 @@ public class CityGenerator {
 	private static final int numberOfStartingFamilies = 5;
 	private static final int endingYear = 1759;
 	private static final int targetPopulation = 5000;
-	private static final String cityName = "Darin's Watch";
+	private static final String cityName = "Alvis";
 
 	public static void main(String[] args) throws JAXBException, InitializationException, IOException {
 		WorldConfig.initialize();

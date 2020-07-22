@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Stage Manager</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Assistant Stage Manager</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Stage Manager</professionTaught>
+	<resourceAdjustment name="Direction" value="-500" />
+	<resourceAdjustment name="Order" value="500" />
+</profession>

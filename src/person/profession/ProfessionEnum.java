@@ -18,8 +18,6 @@ package person.profession;
 ////	Mayor,
 ////	GuardCaptain,
 ////	Priest,
-////	Stonemason,
-////	Carpenter,
 ////	Dentist,
 ////	Doctor,
 ////	RestarauntOwner,

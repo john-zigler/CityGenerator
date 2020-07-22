@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Fletcher</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Fletcher</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Fletcher</professionTaught>
+	<resourceAdjustment name="Wood" value="-500" />
+	<resourceAdjustment name="Feather" value="-500" />
+	<resourceAdjustment name="Arrow" value="5000" />
+</profession>

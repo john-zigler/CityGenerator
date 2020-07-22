@@ -4,8 +4,8 @@
 	<name>Tavern</name>
 	<position>Tavernkeep</position>
 	<position>Tavernkeep</position>
-	<position>Bard</position>
-	<position>Bard</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
 	<houseIncluded>true</houseIncluded>
 	<namingRules>
 		<buildingType>Taphouse</buildingType>

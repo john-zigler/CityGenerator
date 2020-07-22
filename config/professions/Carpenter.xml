@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<profession>
+	<name>Carpenter</name>
+	<minTrainingRequired>5</minTrainingRequired>
+	<buildingRequired>true</buildingRequired>
+	<apprenticeName>Apprentice Carpenter</apprenticeName>
+	<numberOfApprentices>2</numberOfApprentices>
+	<professionTaught>Carpenter</professionTaught>
+	<resourceAdjustment name="Tool" value="-2" />
+	<resourceAdjustment name="Wood" value="-400" />
+	<resourceAdjustment name="Furniture" value="300" />
+</profession>

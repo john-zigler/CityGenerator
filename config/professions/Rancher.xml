@@ -4,7 +4,7 @@
 	<name>Rancher</name>
 	<minTrainingRequired>0</minTrainingRequired>
 	<buildingRequired>true</buildingRequired>
-	<apprenticeName>Ranch hand</apprenticeName>
+	<apprenticeName>Ranchhand</apprenticeName>
 	<numberOfApprentices>1</numberOfApprentices>
 	<professionTaught>Rancher</professionTaught>
 	<resourceAdjustment name="Milk" value="3000" />
