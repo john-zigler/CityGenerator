@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Randomizer {
 	private static final double PREFERENCE_DEVIATION = .15;
-	private static final double STREET_ANGLE_DEVIATION = .15;
+	private static final double STREET_ANGLE_DEVIATION = .3;
 	private static Random random = new Random();
 	
 	private Randomizer() {
@@ -54,8 +54,7 @@ public class Randomizer {
 		double rgn = random.nextDouble();
 		return rgn < odds;
 	}
-	public static double generateRandomStreetAngleInRadians(double adjacentBuildingAngleInRadians) {
-		double startingAngle = (adjacentBuildingAngleInRadians + Math.PI) % (2 * Math.PI);
+	public static double generateRandomStreetAngle(double startingAngle) {
 		double deviation = (random.nextDouble() * 2 * STREET_ANGLE_DEVIATION) -  STREET_ANGLE_DEVIATION;
 		return startingAngle + deviation;
 	}

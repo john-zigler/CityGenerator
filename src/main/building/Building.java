@@ -3,7 +3,7 @@ package main.building;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.city.street.Street;
+import main.city.street.StreetSegment;
 import main.person.Person;
 import main.person.profession.Profession;
 import main.util.WorldConfig;
@@ -18,9 +18,9 @@ public class Building {
 	private BuildingType buildingType;
 	private Person founder;
 	private BuildingLocation location;
-	private Street street;
+	private StreetSegment streetSegment;
 	
-	public Building(String name, BuildingType buildingType, Person founder, BuildingLocation location, Street street) {
+	public Building(String name, BuildingType buildingType, Person founder, BuildingLocation location, StreetSegment streetSegment) {
 		this.id = WorldConfig.getNextId();
 		this.name = name;
 		this.buildingType = buildingType;
@@ -29,10 +29,13 @@ public class Building {
 			founder.addPlaceFounded(this);
 		}
 		this.location = location;
-		this.street = street;
-		if (street != null) {
+		for (BuildingLocation neighbor : location.getNeighbors()) {
+			neighbor.addNeighbor(location);
+		}
+		this.streetSegment = streetSegment;
+		if (streetSegment != null) {
 			//Street should only be null for the first building in town
-			street.addBuilding(this);
+			streetSegment.addBuilding(this);
 		}
 	}
 
@@ -67,8 +70,8 @@ public class Building {
 	public BuildingLocation getLocation() {
 		return location;
 	}
-	public Street getStreet() {
-		return street;
+	public StreetSegment getStreetSegment() {
+		return streetSegment;
 	}
 
 	public List<Profession> getAvailablePostions() {

@@ -21,4 +21,17 @@ public class Pair<K, V> {
 	public void setValue(V value) {
 		this.value = value;
 	}
+	public String toString() {
+		return key.toString() + ", " + value.toString();
+	}
+	public int hashCode() {
+		return toString().hashCode();
+	}
+	public boolean equals(Object object) {
+		if (object instanceof Pair) {
+			Pair<?, ?> otherPair = (Pair<?, ?>) object;
+			return this.key.equals(otherPair.key) && this.value.equals(otherPair.value);
+		}
+		return false;
+	}
 }

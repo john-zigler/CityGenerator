@@ -1,48 +1,58 @@
 package main.util;
 
-import main.building.BuildingLocation;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 
 public class Calculator {
-	//Sometimes calculations leave rounding errors
-	private static final double MARGIN_OF_ERROR = 0.0001;
-	
 	private Calculator() {
 		//Hidden constructor
 	}
 	
-	public static double getDistanceBetweenLocations(Location location1, Location location2) {
-		return Math.sqrt(Math.pow(location1.getX() - location2.getX(), 2) + Math.pow(location1.getY() - location2.getY(), 2));
-	}
-	
-	public static double getAngleInRadians(Location location1, Location location2) {
-		double theta = Math.atan2(Math.abs(location2.getY() - location1.getY()), Math.abs(location2.getX() - location1.getX()));
-		if (location1.getX() > location2.getX()) {
+	public static double getAngleInRadians(Point2D point1, Point2D point2) {
+		double theta = Math.atan2(Math.abs(point2.getY() - point1.getY()), Math.abs(point2.getX() - point1.getX()));
+		if (point1.getX() > point2.getX()) {
 			theta = Math.PI - theta;
 		}
-		if (location1.getY() > location2.getY()) {
+		if (point1.getY() > point2.getY()) {
 			theta = 2 * Math.PI - theta;
 		}
 		return theta;
 	}
 	
-	/**
-	 * Return a BuildingLocation containing the x and y where the line passes closest to the point, and a direction pointing toward the point
-	 */
-	public static BuildingLocation getLocationWhereLineIsClosestToPoint(Location origin, double lineAngle, Location point) {
-		double angle1 = Calculator.getAngleInRadians(origin, point) - lineAngle;
-		double distanceFromOrigin = Calculator.getDistanceBetweenLocations(origin, point) * Math.cos(angle1);
-		double x = origin.getX() + distanceFromOrigin * Math.cos(lineAngle);
-		double y = origin.getY() + distanceFromOrigin * Math.sin(lineAngle);
-		double direction = angle1 < 0 || angle1 > Math.PI ? lineAngle - Math.PI / 2 : lineAngle + Math.PI / 2;
-		return new BuildingLocation(x, y, direction);
+	public static Point2D getLocationWhereLineIsClosestToPoint(Line2D line, Point2D point) {
+		double lineAngle = getAngleInRadians(line.getP1(), line.getP2());
+		double angle1 = Calculator.getAngleInRadians(line.getP1(), point) - lineAngle;
+		double distanceFromOrigin = line.getP1().distance(point) * Math.cos(angle1);
+		Point2D location = getPointByOriginAngleAndDistance(line.getP1(), lineAngle, distanceFromOrigin);
+		return location;
 	}
 	
-	public static boolean pointLiesOnLineBetweenPoints(Location point, Location end1, Location end2) {
-		return getDistanceBetweenLocations(point, end1) + getDistanceBetweenLocations(point, end2) == getDistanceBetweenLocations(end1, end2);
+	public static Point2D getPointOfIntersectionBetweenTwoLines(double angle1, Point2D point1, double angle2, Point2D point2) {
+		if (angle1 == angle2) {
+			return null;
+		}
+
+		double cos1 = Math.cos(angle1);
+		double sin1 = Math.sin(angle1);
+		double cos2 = Math.cos(angle2);
+		double sin2 = Math.sin(angle2);
+		
+		double u = (cos1 * (point2.getY() - point1.getY()) - sin1 * (point2.getX() - point1.getX())) / (cos2 * sin1 - sin2 * cos1);
+		double x = point2.getX() + u * cos2;
+		double y = point2.getY() + u * sin2;
+		
+		return new Point2D.Double(x, y);
 	}
 	
-	public static boolean distanceBetweenPointsLessThanLength(Location location1, Location location2, double length) {
-		double distance = Calculator.getDistanceBetweenLocations(location1, location2);
-		return distance + MARGIN_OF_ERROR < length;
+	public static double getAreaOfTriangle(Point2D point1, Point2D point2, Point2D point3) {
+		return Math.abs((point1.getX() * (point2.getY() - point3.getY()) + point2.getX() * (point3.getY() - point1.getY()) + point3.getX() * (point1.getY() - point2.getY())) / 2.0);
+	}
+	
+	public static Point2D getPointByOriginAngleAndDistance(Point2D origin, double angle, double distance) {
+		return new Point2D.Double(origin.getX() + distance * Math.cos(angle), origin.getY() + distance * Math.sin(angle));
+	}
+	public static  boolean closeEnoughForGovernmentWork(Point2D expectedPoint, Point2D actualPoint) {
+		return Math.rint(expectedPoint.getX() * 100) == Math.rint(actualPoint.getX() * 100)
+				&& Math.rint(expectedPoint.getY() * 100) == Math.rint(actualPoint.getY() * 100);
 	}
 }

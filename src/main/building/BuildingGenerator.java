@@ -2,66 +2,81 @@ package main.building;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
 
 import main.city.City;
 import main.city.street.Street;
+import main.city.street.StreetSegment;
 import main.exceptions.BuildingCollisionException;
 import main.exceptions.StreetCollisionException;
 import main.person.Person;
-import main.util.Calculator;
 import main.util.CollisionDetector;
 import main.util.Constants;
-import main.util.Location;
 import main.util.Pair;
 import main.util.Randomizer;
 
 public class BuildingGenerator {
 	private static final int MAX_ATTEMPTS = 20;
+	private static long timeSpentGeneratingBuildings = 0;
+	private static long timeSpentCollectingLocations = 0;
+	private static long timeSpentComparingLocations = 0;
 	
 	private BuildingGenerator() {
 		//Hidden constructor
 	}
 	
 	public static Building generateBuilding(BuildingType buildingType, Person proprieter, City city) {
-		Pair<BuildingLocation, Street> bestLocation = getBestLocation(buildingType, city);
+		long start = new Date().getTime();
+		Pair<BuildingLocation, StreetSegment> bestLocation = getBestLocation(buildingType, city);
 		if (bestLocation == null) {
+			timeSpentGeneratingBuildings += new Date().getTime() - start;
 			outputInvalidLocationsConsidered(buildingType, city);
 			throw new RuntimeException("Unable to place new " + buildingType.getName());
 		}
+		timeSpentGeneratingBuildings += new Date().getTime() - start;
 		return new Building(generateBuildingName(buildingType, proprieter), buildingType, proprieter, bestLocation.getKey(), bestLocation.getValue());
 	}
 	
-	private static Pair<BuildingLocation, Street> getBestLocation(BuildingType buildingType, City city) {
-		Location townCenter = city.getTownCenter();
+	private static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, City city) {
+		Point2D townCenter = city.getTownCenter();
 		double bestDistance = -1;
 		BuildingLocation bestLocation = null;
-		Street bestStreet = null;
-		
+		Map<BuildingLocation, StreetSegment> locations = new HashMap<>();
+
+		long time1 = new Date().getTime();
 		for (Street street : city.getStreets()) {
-			List<BuildingLocation> locations = street.getAllLocations(buildingType, city);
-			for (BuildingLocation location : locations) {
-				double distance = Calculator.getDistanceBetweenLocations(location, townCenter);
-				if ((bestLocation == null || distance < bestDistance)
-						&& CollisionDetector.isBuildingLocationValid(location, buildingType.getRadius(), city)) {
-					bestLocation = location;
-					bestDistance = distance;
-					bestStreet = street;
+			for (StreetSegment segment : street.getSegments()) {
+				for (BuildingLocation location : street.getAllLocations(buildingType, city)) {
+					locations.put(location, segment);
 				}
 			}
 		}
-		
+		long time2 = new Date().getTime();
+		for (BuildingLocation location : locations.keySet()) {
+			double distance = location.getCenter().distance(townCenter);
+			if (bestLocation == null || distance < bestDistance) {
+				bestLocation = location;
+				bestDistance = distance;
+			}
+		}
+		long time3 = new Date().getTime();
+
+		timeSpentCollectingLocations += time2 - time1;
+		timeSpentComparingLocations += time3 - time2;
 		if (bestLocation != null) {
-			return new Pair<>(bestLocation, bestStreet);
+			return new Pair<>(bestLocation, locations.get(bestLocation));
 		} else {
 			return null;
 		}
@@ -78,20 +93,20 @@ public class BuildingGenerator {
 		
 		for (BuildingLocation location : locations) {
 			try {
-				CollisionDetector.checkBuildingLocationValid(location, buildingType.getRadius(), city);
+				CollisionDetector.checkBuildingLocationValid(location, city);
 				mapGraphics.setColor(Color.GREEN);
-				mapGraphics.drawOval((int) (location.getX() - buildingType.getRadius() - city.getMinX()),
-						(int) (location.getY() - buildingType.getRadius() - city.getMinY()),
+				mapGraphics.drawOval((int) (location.getCenter().getX() - buildingType.getRadius() - city.getMinX()),
+						(int) (location.getCenter().getY() - buildingType.getRadius() - city.getMinY()),
 						buildingType.getRadius() * 2, buildingType.getRadius() * 2);
 			} catch (BuildingCollisionException e) {
 				mapGraphics.setColor(Color.RED);
-				mapGraphics.drawOval((int) (location.getX() - buildingType.getRadius() - city.getMinX()),
-						(int) (location.getY() - buildingType.getRadius() - city.getMinY()),
+				mapGraphics.drawOval((int) (location.getCenter().getX() - buildingType.getRadius() - city.getMinX()),
+						(int) (location.getCenter().getY() - buildingType.getRadius() - city.getMinY()),
 						buildingType.getRadius() * 2, buildingType.getRadius() * 2);
 			} catch (StreetCollisionException e) {
 				mapGraphics.setColor(Color.ORANGE);
-				mapGraphics.drawOval((int) (location.getX() - buildingType.getRadius() - city.getMinX()),
-						(int) (location.getY() - buildingType.getRadius() - city.getMinY()),
+				mapGraphics.drawOval((int) (location.getCenter().getX() - buildingType.getRadius() - city.getMinX()),
+						(int) (location.getCenter().getY() - buildingType.getRadius() - city.getMinY()),
 						buildingType.getRadius() * 2, buildingType.getRadius() * 2);
 			}
 		}
@@ -139,5 +154,15 @@ public class BuildingGenerator {
 			usedWords.add(nextWord);
 		}
 		return name;
+	}
+
+	public static long getTimeSpentGeneratingBuildings() {
+		return timeSpentGeneratingBuildings;
+	}
+	public static long getTimeSpentCollectingLocations() {
+		return timeSpentCollectingLocations;
+	}
+	public static long getTimeSpentComparingLocations() {
+		return timeSpentComparingLocations;
 	}
 }

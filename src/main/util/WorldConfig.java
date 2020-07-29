@@ -29,6 +29,7 @@ public class WorldConfig {
 	private static List<Race> racesWithLikelihood = new ArrayList<>();
 	private static int id = Integer.MIN_VALUE;
 	private static int year = 0;
+	private static int largestRadius = 10;
 
 	private static final String buildingTypesFilepath = "config/buildingTypes";
 	private static final String professionsFilepath = "config/professions";
@@ -80,6 +81,9 @@ public class WorldConfig {
 	public static void incrementYear() {
 		year++;
 	}
+	public static int getLargestRadius() {
+		return largestRadius;
+	}
 	
 	private static void loadBuildingTypes() throws JAXBException, InitializationException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(Profession.class);
@@ -96,6 +100,9 @@ public class WorldConfig {
 				}
 				Profession profession = getProfessionByName(buildingType.getPositions().get(0));
 				profession.setProprietorOf(buildingType);
+			}
+			if (buildingType.getRadius() > largestRadius) {
+				largestRadius = buildingType.getRadius();
 			}
 			System.out.println("Loaded building type: " + buildingType.getName());
 		}

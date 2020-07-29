@@ -3,11 +3,13 @@ package main.city;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,14 +25,18 @@ import main.building.BuildingLocation;
 import main.building.BuildingType;
 import main.city.street.Street;
 import main.city.street.StreetGenerator;
+import main.city.street.StreetSegment;
 import main.person.Person;
 import main.person.profession.Profession;
 import main.resource.ResourceAdjustment;
-import main.util.Location;
 import main.util.Randomizer;
 import main.util.WorldConfig;
 
 public class City {
+	private static final int SECTOR_SIZE = 40; //Math.sqrt(8) * WorldConfig.getLargestRadius();
+//	private static final int LARGEST_MAP_SIDE_LENGTH = (int) (Math.sqrt(Integer.MAX_VALUE) / 4);
+//	private static final int NUMBER_OF_SECTOR_INDEXES = LARGEST_MAP_SIDE_LENGTH / SECTOR_SIZE;
+	
 	private String name;
 	private List<Building> buildings = new ArrayList<>();
 	private List<Street> streets = new ArrayList<>();
@@ -48,6 +54,10 @@ public class City {
 	private double maxY = 0;
 	private double minX = 0;
 	private double minY = 0;
+//	private Sector[][] sectorMap = new Sector[NUMBER_OF_SECTOR_INDEXES][NUMBER_OF_SECTOR_INDEXES];
+	private Map<Integer, Map<Integer, Sector>> sectorMap = new HashMap<>();
+	private static long timeSpentGettingSectors = 0;
+	
 	
 	
 	//TODO founder
@@ -55,11 +65,18 @@ public class City {
 
 	public City(final String name) {
 		this.name = name;
+//		for (int i = 0; i < NUMBER_OF_SECTOR_INDEXES; i++) {
+//			for (int j = 0; j < NUMBER_OF_SECTOR_INDEXES; j++) {
+//				sectorMap[i][j] = new Sector();
+//			}
+//		}
 		for (String resource : WorldConfig.resources) {
 			nearbyResources.put(resource, 0);
 			adjustedResources.put(resource, 0);
 		}
-		graveyard = new Building("Graveyard", WorldConfig.getBuildingTypeByName("Graveyard"), null, new BuildingLocation (0, 0, Randomizer.generateRandomNumber(0.0, 2 * Math.PI)), null);
+		BuildingType graveyardBuildingType = WorldConfig.getBuildingTypeByName("Graveyard");
+		BuildingLocation location = new BuildingLocation(new Point2D.Double(0, 0), graveyardBuildingType.getRadius(), Randomizer.generateRandomNumber(0.0, 2 * Math.PI));
+		graveyard = new Building("Graveyard", graveyardBuildingType, null, location, null);
 		addBuilding(graveyard, true);
 	}
 	
@@ -70,7 +87,7 @@ public class City {
 		return this.buildings;
 	}
 	public void addBuilding(final Building building) {
-		addBuilding(building, Randomizer.rollAgainstOdds(building.getBuildingType().getRadius() / 100.0));
+		addBuilding(building, Randomizer.rollAgainstOdds(2 * building.getBuildingType().getRadius() / (double) WorldConfig.getLargestRadius()));
 	}
 	public void addBuilding(final Building building, boolean generateStreet) {
 		this.buildings.add(building);
@@ -81,20 +98,12 @@ public class City {
 				addStreet(newStreet);
 			}
 		}
-		townCenterX += (building.getLocation().getX() - townCenterX) / this.buildings.size();
-		townCenterY += (building.getLocation().getY() - townCenterY) / this.buildings.size();
-		if (building.getLocation().getX() + building.getBuildingType().getRadius() > maxX) {
-			maxX = building.getLocation().getX() + building.getBuildingType().getRadius();
+		for (Sector sector : getSectors(building.getLocation().getBounds2D())) {
+			sector.addBuilding(building);
 		}
-		if (building.getLocation().getY() + building.getBuildingType().getRadius() > maxY) {
-			maxY = building.getLocation().getY() + building.getBuildingType().getRadius();
-		}
-		if (building.getLocation().getX() - building.getBuildingType().getRadius() < minX) {
-			minX = building.getLocation().getX() - building.getBuildingType().getRadius();
-		}
-		if (building.getLocation().getY() - building.getBuildingType().getRadius() < minY) {
-			minY = building.getLocation().getY() - building.getBuildingType().getRadius();
-		}
+		townCenterX += (building.getLocation().getCenter().getX() - townCenterX) / this.buildings.size();
+		townCenterY += (building.getLocation().getCenter().getY() - townCenterY) / this.buildings.size();
+		adjustMapEdges(building.getLocation().getBounds2D());
 	}
 	public boolean containsBuildingWithName(String name) {
 		for (Building building : buildings) {
@@ -109,29 +118,11 @@ public class City {
 	}
 	public void addStreet(final Street street) {
 		this.streets.add(street);
-		if (street.getEnd1().getX() > maxX) {
-			maxX = street.getEnd1().getX();
-		}
-		if (street.getEnd2().getX() > maxX) {
-			maxX = street.getEnd2().getX();
-		}
-		if (street.getEnd1().getY() > maxY) {
-			maxY = street.getEnd1().getY();
-		}
-		if (street.getEnd2().getY() > maxY) {
-			maxY = street.getEnd2().getY();
-		}
-		if (street.getEnd1().getX() < minX) {
-			minX = street.getEnd1().getX();
-		}
-		if (street.getEnd2().getX() < minX) {
-			minX = street.getEnd2().getX();
-		}
-		if (street.getEnd1().getY() < minY) {
-			minY = street.getEnd1().getY();
-		}
-		if (street.getEnd2().getY() < minY) {
-			minY = street.getEnd2().getY();
+		for (StreetSegment segment : street.getSegments()) {
+//			adjustMapEdges(segment.getLine().getBounds2D());
+			for (Sector sector : getSectors(segment.getLine().getBounds2D())) {
+				sector.addStreetSegment(segment);
+			}
 		}
 	}
 	public boolean containsStreetWithName(String name) {
@@ -236,8 +227,22 @@ public class City {
 		return apprenticeshipOpportunities;
 	}
 
-	public Location getTownCenter() {
-		return new Location(this.townCenterX, this.townCenterY);
+	public Point2D getTownCenter() {
+		return new Point2D.Double(this.townCenterX, this.townCenterY);
+	}
+	private void adjustMapEdges(Rectangle2D box) {
+		if (box.getMaxX() > maxX) {
+			maxX = box.getMaxX();
+		}
+		if (box.getMaxY() > maxY) {
+			maxY = box.getMaxY();
+		}
+		if (box.getMinX() < minX) {
+			minX = box.getMinX();
+		}
+		if (box.getMinY() < minY) {
+			minY = box.getMinY();
+		}
 	}
 	public double getMinX() {
 		return this.minX;
@@ -251,7 +256,52 @@ public class City {
 	public double getMaxY() {
 		return this.maxY;
 	}
+
+	public Set<Sector> getSectors(Rectangle2D box) {
+		Set<Sector> sectorList = new HashSet<>();
+		int minXIndex = getSectorIndex(box.getMinX());
+		int minYIndex = getSectorIndex(box.getMinY());
+		int maxXIndex = getSectorIndex(box.getMaxX());
+		int maxYIndex = getSectorIndex(box.getMaxY());
+		for (int i = minXIndex; i <= maxXIndex; i++) {
+			for (int j = minYIndex; j <= maxYIndex; j++) {
+				sectorList.add(getSector(i, j));
+			}
+		}
+		return sectorList;
+	}
+	private int getSectorIndex(double length) {
+		return (int) (length / SECTOR_SIZE) - (length < 0 ? 1 : 0);
+	}
+	public Sector getSector(int x, int y) {
+		long start = new Date().getTime();
+		if (!sectorMap.containsKey(x)) {
+			sectorMap.put(x, new HashMap<>());
+		}
+		if (!sectorMap.get(x).containsKey(y)) {
+			sectorMap.get(x).put(y, new Sector());
+		}
+		Sector sector = sectorMap.get(x).get(y);
+		timeSpentGettingSectors += new Date().getTime() - start;
+		return sector;
+	}
 	
+	/**
+	 * FOR UNIT TESTING PURPOSES ONLY!!!
+	 */
+	public void clearSectorMap() {
+//		for (int i = 0; i < NUMBER_OF_SECTOR_INDEXES; i++) {
+//			for (int j = 0; j < NUMBER_OF_SECTOR_INDEXES; j++) {
+//				sectorMap[i][j] = new Sector();
+//			}
+//		}
+		sectorMap.clear();
+	}
+
+	public static long getTimeSpentGettingSectors() {
+		return timeSpentGettingSectors;
+	}
+
 	public void renderMap(String folder) {
 		try {
 			ImageIO.write(generateMap(), "png", new File(folder + name + ".png"));
@@ -261,32 +311,20 @@ public class City {
 	}
 	
 	public BufferedImage generateMap() {
-		//double unadjustedSize = (maxX - minX) * (maxY - minY);
-		double scale = 1; //unadjustedSize > Integer.MAX_VALUE ? Integer.MAX_VALUE / unadjustedSize : 1.0;
-		int mapSizeX = (int) (scale * (maxX - minX));
-		int mapSizeY = (int) (scale * (maxY - minY));
+		int mapSizeX = (int) (maxX - minX);
+		int mapSizeY = (int) (maxY - minY);
 		BufferedImage mapImage = new BufferedImage(mapSizeX, mapSizeY, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D mapGraphics = mapImage.createGraphics();
+		AffineTransform tx = AffineTransform.getTranslateInstance(-minX, -minY);
 		for (Building building : buildings) {
-			int radius = (int) (scale * building.getBuildingType().getRadius());
-			BufferedImage buildingImage = new BufferedImage(radius * 4, radius * 4, BufferedImage.TYPE_4BYTE_ABGR);
-			Graphics2D buildingGraphics = buildingImage.createGraphics();
-			buildingGraphics.setColor(Color.GRAY);
-//			buildingGraphics.fillRect(radius, radius, radius * 2, radius * 2);
-			buildingGraphics.fillOval(radius, radius, radius * 2, radius * 2);
-			buildingGraphics.setColor(Color.BLACK);
-			buildingGraphics.drawLine(radius * 2, radius * 2, radius * 3, radius * 2);
-			
-			BuildingLocation location = building.getLocation();
-			AffineTransform tx = AffineTransform.getRotateInstance(location.getRotationRadians(), radius * 2, radius * 2);
-			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-	
-			// Drawing the rotated image at the required drawing locations
-			mapGraphics.drawImage(op.filter(buildingImage, null), (int) ((scale * location.getX()) - (radius * 2) - minX), (int) ((scale * location.getY()) - (radius * 2) - minY), null);
+			mapGraphics.setColor(Color.GRAY);
+			mapGraphics.fill(tx.createTransformedShape(building.getLocation()));
 		}
 		for (Street street : streets) {
-			mapGraphics.setColor(Color.YELLOW);
-			mapGraphics.drawLine((int) (scale * street.getEnd1().getX() - minX), (int) (scale * street.getEnd1().getY() - minY), (int) (scale * street.getEnd2().getX() - minX), (int) (scale * street.getEnd2().getY() - minY));
+			for (StreetSegment segment : street.getSegments()) {
+				mapGraphics.setColor(Color.YELLOW);
+				mapGraphics.draw(tx.createTransformedShape(segment.getLine()));
+			}
 		}
 		return mapImage;
 	}

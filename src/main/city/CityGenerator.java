@@ -10,9 +10,13 @@ import java.util.Set;
 
 import javax.xml.bind.JAXBException;
 
+import main.building.BuildingGenerator;
+import main.city.street.StreetGenerator;
+import main.city.street.StreetSegment;
 import main.exceptions.InitializationException;
 import main.person.Person;
 import main.person.PersonGenerator;
+import main.util.CollisionDetector;
 import main.util.HtmlOutputter;
 import main.util.Randomizer;
 import main.util.WorldConfig;
@@ -22,7 +26,7 @@ public class CityGenerator {
 	private static final int numberOfChildren = 3;
 	private static final int numberOfStartingFamilies = 5;
 	private static final int endingYear = 1759;
-	private static final int targetPopulation = 5000;
+	private static final int targetPopulation = 3000;
 	private static final String cityName = "Alvis";
 
 	public static void main(String[] args) throws JAXBException, InitializationException, IOException {
@@ -45,19 +49,28 @@ public class CityGenerator {
 		System.out.println("Time spent finding spouses: " + Person.TIME_SPENT_FINDING_SPOUSES);
 		System.out.println("Time spent handling job knowledge: " + Person.TIME_SPENT_HANDLING_JOB_KNOWLEDGE);
 
+		System.out.println("Outputting files...");
 //		HtmlOutputter outputter = new HtmlOutputter("C:/CityGenerator/" + city.getName() + "_" + new Date().getTime() + "/");
 //		outputter.outputCity(city);
 		city.renderMap("C:/CityGenerator/");
+		System.out.println("Time spent detecting collecting building locations: " + BuildingGenerator.getTimeSpentCollectingLocations());
+		System.out.println("Time spent detecting collecting corner lots: " + StreetSegment.getTimeSpentGettingCornerLots());
+		System.out.println("Time spent detecting collecting center lots: " + StreetSegment.getTimeSpentGettingCenterLots());
+		System.out.println("Time spent detecting collecting neighbor lots: " + StreetSegment.getTimeSpentGettingNeighborLots());
+		System.out.println();
+		System.out.println("Time spent detecting building collisions: " + CollisionDetector.getTimeSpentDetectingBuildingCollisions());
+		System.out.println("Time spent detecting street collisions: " + CollisionDetector.getTimeSpentDetectingStreetCollisions());
+		System.out.println("Time spent getting sectors: " + City.getTimeSpentGettingSectors());
 
-		System.out.println();
-		List<String> resources = new ArrayList<>(WorldConfig.resources);
-		Collections.sort(resources);
-		for (String resource : resources) {
-			System.out.println("Final amount of " + resource + ": " + city.getAvailableResources().get(resource));
-		}
-		System.out.println();
-		System.out.println("Final amount of living citizens: " + city.getLivingCitizens().size());
-		System.out.println("Final amount of dead citizens: " + city.getDeadCitizens().size());
+//		System.out.println();
+//		List<String> resources = new ArrayList<>(WorldConfig.resources);
+//		Collections.sort(resources);
+//		for (String resource : resources) {
+//			System.out.println("Final amount of " + resource + ": " + city.getAvailableResources().get(resource));
+//		}
+//		System.out.println();
+//		System.out.println("Final amount of living citizens: " + city.getLivingCitizens().size());
+//		System.out.println("Final amount of dead citizens: " + city.getDeadCitizens().size());
 	}
 	
 	public static City generateCity() {

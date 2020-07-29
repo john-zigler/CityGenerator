@@ -1,6 +1,10 @@
 package test.util;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import javax.xml.bind.JAXBException;
@@ -11,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import main.building.BuildingLocation;
 import main.exceptions.InitializationException;
 import main.util.CollisionDetector;
-import main.util.Location;
 
 public class CollisionDetectorTest {
 //	private static City city;
@@ -44,21 +47,20 @@ public class CollisionDetectorTest {
 	}
 	@Test
 	public void buildingCollidesWithStreetTest() {
-		Location streetEnd1 = new Location(0, 0);
-		Location streetEnd2 = new Location(0, 200);
+		Line2D street = new Line2D.Double(0, 0, 0, 200);
 		double buildingRadius = 10;
 		double halfStreetWidth = 2;
 
-		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(0, 0, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(0, 200, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(0, 100, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(10, 100, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
+		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(0, 0), buildingRadius, 0), street, halfStreetWidth));
+		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(0, 200), buildingRadius, 0), street, halfStreetWidth));
+		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(0, 100), buildingRadius, 0), street, halfStreetWidth));
+		assertTrue(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(10, 100), buildingRadius, 0), street, halfStreetWidth));
 
-		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(0, -12, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(0, 212, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(12, 0, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(12, 100, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
-		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(12, 200, 0), buildingRadius, streetEnd1, streetEnd2, halfStreetWidth));
+		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(0, -12), buildingRadius, 0), street, halfStreetWidth));
+		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(0, 212), buildingRadius, 0), street, halfStreetWidth));
+		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(12, 0), buildingRadius, 0), street, halfStreetWidth));
+		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(12, 100), buildingRadius, 0), street, halfStreetWidth));
+		assertFalse(CollisionDetector.buildingCollidesWithStreet(new BuildingLocation(new Point2D.Double(12, 200), buildingRadius, 0), street, halfStreetWidth));
 		//TODO
 	}
 	@Test

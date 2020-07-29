@@ -6,6 +6,8 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import main.util.Randomizer;
+
 @XmlRootElement
 public class BuildingType {
 	@XmlElement
@@ -17,7 +19,7 @@ public class BuildingType {
 	@XmlElement
 	private boolean houseIncluded = false;
 	@XmlElement
-	private int radius = 10;
+	private int radius = Randomizer.generateRandomNumber(10, 30);
 	
 	public BuildingType(String name, List<String> positions, NamingRules namingRules, boolean houseIncluded, int radius) {
 		this.name = name;
