@@ -51,6 +51,10 @@ public class Calculator {
 	public static Point2D getPointByOriginAngleAndDistance(Point2D origin, double angle, double distance) {
 		return new Point2D.Double(origin.getX() + distance * Math.cos(angle), origin.getY() + distance * Math.sin(angle));
 	}
+	
+	public static Point2D getPointBetween(Point2D point1, Point2D point2) {
+		return new Point2D.Double((point1.getX() + point2.getX()) / 2, (point1.getY() + point2.getY()) / 2);
+	}
 	public static  boolean closeEnoughForGovernmentWork(Point2D expectedPoint, Point2D actualPoint) {
 		return Math.rint(expectedPoint.getX() * 100) == Math.rint(actualPoint.getX() * 100)
 				&& Math.rint(expectedPoint.getY() * 100) == Math.rint(actualPoint.getY() * 100);

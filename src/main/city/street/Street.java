@@ -3,16 +3,17 @@ package main.city.street;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.building.BuildingLocation;
-import main.building.BuildingType;
 import main.city.City;
 
 public class Street {
 	private String name;
 	private List<StreetSegment> segments = new ArrayList<>();
+	private List<StreetSegment> ends = new ArrayList<>();
+	private City city;
 	
-	public Street(String name) {
+	public Street(String name, City city) {
 		this.name = name;
+		this.city = city;
 	}
 	
 	public String getName() {
@@ -23,13 +24,16 @@ public class Street {
 	}
 	public void addSegment(StreetSegment segment) {
 		this.segments .add(segment);
-	}
-	
-	public List<BuildingLocation> getAllLocations(BuildingType buildingType, City city) {
-		List<BuildingLocation> locations = new ArrayList<>();
-		for (StreetSegment segment : segments) {
-			locations.addAll(segment.getAllLocations(buildingType, city));
+		if (segment.getParent() != null) {
+			this.ends.remove(segment.getParent());
 		}
-		return locations;
+		this.ends.add(segment);
+		city.addStreetSegmentToSectors(segment);
+	}
+	public List<StreetSegment> getEnds() {
+		return ends;
+	}
+	public City getCity() {
+		return city;
 	}
 }

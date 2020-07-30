@@ -45,12 +45,12 @@ public class StreetTest {
 	}
 	@Test
 	public void getAllLocationsHorizontalTest() {
-		Street street = new Street("TestStreet");
+		Street street = new Street("TestStreet", city);
 		StreetSegment segment = new StreetSegment(street, new Point2D.Double(-35, 12.5), new Point2D.Double(35, 12.5), 5);
 		segment.addBuilding(originatingBuilding);
 		street.addSegment(segment);
 		city.addStreet(street);
-		List<BuildingLocation> buildingLocations = street.getAllLocations(buildingType, city);
+		List<BuildingLocation> buildingLocations = segment.getAllLocations(buildingType);
 		BuildingLocation expectedLocation1 = new BuildingLocation(new Point2D.Double(0, 25), 10, 1.5 * Math.PI);
 		assertTrue(buildingLocations.contains(expectedLocation1));
 		
@@ -63,12 +63,12 @@ public class StreetTest {
 	
 	@Test
 	public void getPossibleLocationsVerticalTest() {
-		Street street = new Street("TestStreet");
+		Street street = new Street("TestStreet", city);
 		StreetSegment segment = new StreetSegment(street, new Point2D.Double(12.5, -35), new Point2D.Double(12.5, 35), 5);
 		segment.addBuilding(originatingBuilding);
 		city.addStreet(street);
 		street.addSegment(segment);
-		List<BuildingLocation> buildingLocations = street.getAllLocations(buildingType, city);
+		List<BuildingLocation> buildingLocations = segment.getAllLocations(buildingType);
 		BuildingLocation expectedLocation1 = new BuildingLocation(new Point2D.Double(25, 0), 10, Math.PI);
 		assertTrue(buildingLocations.contains(expectedLocation1));
 		

@@ -1,11 +1,6 @@
 package main.building;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,15 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.imageio.ImageIO;
-
 import main.city.City;
 import main.city.street.Street;
+import main.city.street.StreetGenerator;
 import main.city.street.StreetSegment;
-import main.exceptions.BuildingCollisionException;
-import main.exceptions.StreetCollisionException;
 import main.person.Person;
-import main.util.CollisionDetector;
 import main.util.Constants;
 import main.util.Pair;
 import main.util.Randomizer;
@@ -40,27 +31,31 @@ public class BuildingGenerator {
 	public static Building generateBuilding(BuildingType buildingType, Person proprieter, City city) {
 		long start = new Date().getTime();
 		Pair<BuildingLocation, StreetSegment> bestLocation = getBestLocation(buildingType, city);
-		if (bestLocation == null) {
-			timeSpentGeneratingBuildings += new Date().getTime() - start;
-			outputInvalidLocationsConsidered(buildingType, city);
-			throw new RuntimeException("Unable to place new " + buildingType.getName());
+		while (bestLocation == null) {
+			bestLocation = getBestLocation(buildingType, StreetGenerator.generateStreetSegmentsForWholeCity(city), city);
 		}
 		timeSpentGeneratingBuildings += new Date().getTime() - start;
 		return new Building(generateBuildingName(buildingType, proprieter), buildingType, proprieter, bestLocation.getKey(), bestLocation.getValue());
 	}
 	
 	private static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, City city) {
+		List<StreetSegment> streetSegments = new ArrayList<>();
+		for (Street street : city.getStreets()) {
+			streetSegments.addAll(street.getSegments());
+		}
+		return getBestLocation(buildingType, streetSegments, city);
+	}
+	
+	private static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, List<StreetSegment> streetSegments, City city) {
 		Point2D townCenter = city.getTownCenter();
 		double bestDistance = -1;
 		BuildingLocation bestLocation = null;
 		Map<BuildingLocation, StreetSegment> locations = new HashMap<>();
 
 		long time1 = new Date().getTime();
-		for (Street street : city.getStreets()) {
-			for (StreetSegment segment : street.getSegments()) {
-				for (BuildingLocation location : street.getAllLocations(buildingType, city)) {
-					locations.put(location, segment);
-				}
+		for (StreetSegment segment : streetSegments) {
+			for (BuildingLocation location : segment.getAllLocations(buildingType)) {
+				locations.put(location, segment);
 			}
 		}
 		long time2 = new Date().getTime();
@@ -82,42 +77,6 @@ public class BuildingGenerator {
 		}
 	}
 	
-	private static void outputInvalidLocationsConsidered(BuildingType buildingType, City city) {
-		List<BuildingLocation> locations = new ArrayList<>();
-		for (Street street : city.getStreets()) {
-			locations.addAll(street.getAllLocations(buildingType, city));
-		}
-		
-		BufferedImage mapImage = city.generateMap();
-		Graphics2D mapGraphics = mapImage.createGraphics();
-		
-		for (BuildingLocation location : locations) {
-			try {
-				CollisionDetector.checkBuildingLocationValid(location, city);
-				mapGraphics.setColor(Color.GREEN);
-				mapGraphics.drawOval((int) (location.getCenter().getX() - buildingType.getRadius() - city.getMinX()),
-						(int) (location.getCenter().getY() - buildingType.getRadius() - city.getMinY()),
-						buildingType.getRadius() * 2, buildingType.getRadius() * 2);
-			} catch (BuildingCollisionException e) {
-				mapGraphics.setColor(Color.RED);
-				mapGraphics.drawOval((int) (location.getCenter().getX() - buildingType.getRadius() - city.getMinX()),
-						(int) (location.getCenter().getY() - buildingType.getRadius() - city.getMinY()),
-						buildingType.getRadius() * 2, buildingType.getRadius() * 2);
-			} catch (StreetCollisionException e) {
-				mapGraphics.setColor(Color.ORANGE);
-				mapGraphics.drawOval((int) (location.getCenter().getX() - buildingType.getRadius() - city.getMinX()),
-						(int) (location.getCenter().getY() - buildingType.getRadius() - city.getMinY()),
-						buildingType.getRadius() * 2, buildingType.getRadius() * 2);
-			}
-		}
-		
-		try {
-			ImageIO.write(mapImage, "png", new File("C:/CityGenerator/" + buildingType.getName() + (new Date().getTime()) + ".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public static String generateBuildingName(BuildingType buildingType, Person proprieter) {
 		try {
 			int attempts = 0;
@@ -135,7 +94,6 @@ public class BuildingGenerator {
 			} while (!buildingType.isHouse() && proprieter.getHomeCity().containsBuildingWithName(name) && attempts < MAX_ATTEMPTS);
 			return name;
 		} catch (Exception e) {
-//			System.err.println("Encountered an error naming a(n) " + type.getName() + ". Using default convention.");
 			return proprieter.getFirstName() + "'s " + buildingType.getName();
 		}
 	}

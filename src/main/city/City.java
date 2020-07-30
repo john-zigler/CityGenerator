@@ -118,11 +118,10 @@ public class City {
 	}
 	public void addStreet(final Street street) {
 		this.streets.add(street);
-		for (StreetSegment segment : street.getSegments()) {
-//			adjustMapEdges(segment.getLine().getBounds2D());
-			for (Sector sector : getSectors(segment.getLine().getBounds2D())) {
-				sector.addStreetSegment(segment);
-			}
+	}
+	public void addStreetSegmentToSectors(StreetSegment segment) {
+		for (Sector sector : getSectors(segment.getLine().getBounds2D())) {
+			sector.addStreetSegment(segment);
 		}
 	}
 	public boolean containsStreetWithName(String name) {
@@ -302,10 +301,10 @@ public class City {
 		return timeSpentGettingSectors;
 	}
 
-	public void renderMap(String folder) {
+	public void renderMap(String filename) {
 		try {
-			ImageIO.write(generateMap(), "png", new File(folder + name + ".png"));
-		} catch (IOException e) {
+			ImageIO.write(generateMap(), "png", new File(filename + ".png"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

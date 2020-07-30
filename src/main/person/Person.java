@@ -475,6 +475,10 @@ public class Person {
 		}
 		Date finish = new Date();
 		TIME_SPENT_HANDLING_JOB_KNOWLEDGE += (finish.getTime() - start.getTime());
+		
+//		if (placeOfEmployment != null && placeOfEmployment.get) {
+//			
+//		}
 	}
 	
 	//Returns a sorted list of professions with most favorable first

@@ -103,7 +103,7 @@ public class CollisionDetector {
 	}
 	
 	public static boolean buildingCollidesWithStreet(BuildingLocation buildingLocation, Line2D line, double halfStreetWidth) {
-		return buildingLocation.intersects(line) || buildingLocation.comesWithinDistanceOfLine(halfStreetWidth - MARGIN_OF_ERROR, line);
+		return buildingLocation.intersects(line) || buildingLocation.comesWithinDistanceOfLine(halfStreetWidth - MARGIN_OF_ERROR, line) || buildingLocation.contains(line.getP1());
 	}
 
 	public static long getTimeSpentDetectingBuildingCollisions() {

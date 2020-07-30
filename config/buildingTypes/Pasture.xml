@@ -12,4 +12,5 @@
 	<position>Shepherd</position>
 	<position>Shepherd</position>
 	<houseIncluded>true</houseIncluded>
+	<radius>175</radius>
 </buildingType>

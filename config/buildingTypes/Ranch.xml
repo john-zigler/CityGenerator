@@ -26,4 +26,5 @@
 	<position>Rancher</position>
 	<position>Rancher</position>
 	<houseIncluded>true</houseIncluded>
+	<radius>175</radius>
 </buildingType>

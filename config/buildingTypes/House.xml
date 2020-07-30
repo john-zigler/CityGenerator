@@ -9,4 +9,5 @@
 		<namingConvention>%familyName% %noun%</namingConvention>
 		<namingConvention>%noun% of %firstName%</namingConvention>
 	</namingRules>
+	<radius>10</radius>
 </buildingType>

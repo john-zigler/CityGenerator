@@ -26,7 +26,7 @@ public class CityGenerator {
 	private static final int numberOfChildren = 3;
 	private static final int numberOfStartingFamilies = 5;
 	private static final int endingYear = 1759;
-	private static final int targetPopulation = 3000;
+	private static final int targetPopulation = 5000;
 	private static final String cityName = "Alvis";
 
 	public static void main(String[] args) throws JAXBException, InitializationException, IOException {
@@ -52,7 +52,7 @@ public class CityGenerator {
 		System.out.println("Outputting files...");
 //		HtmlOutputter outputter = new HtmlOutputter("C:/CityGenerator/" + city.getName() + "_" + new Date().getTime() + "/");
 //		outputter.outputCity(city);
-		city.renderMap("C:/CityGenerator/");
+		city.renderMap("C:/CityGenerator/" + cityName);
 		System.out.println("Time spent detecting collecting building locations: " + BuildingGenerator.getTimeSpentCollectingLocations());
 		System.out.println("Time spent detecting collecting corner lots: " + StreetSegment.getTimeSpentGettingCornerLots());
 		System.out.println("Time spent detecting collecting center lots: " + StreetSegment.getTimeSpentGettingCenterLots());

@@ -12,7 +12,7 @@ public class BuildingLocation extends Polygon {
 	private static final long serialVersionUID = -9114099732743354205L;
 	private Point2D center;
 	private List<Point2D> points = new ArrayList<>();
-	private List<Line2D> crossLines = new ArrayList<>();
+	private List<Line2D> perimeter = new ArrayList<>();
 	private double rotationRadians;
 	private double angularRadius;
 	private List<BuildingLocation> neighbors = new ArrayList<>();
@@ -27,8 +27,10 @@ public class BuildingLocation extends Polygon {
 		Point2D p3 = Calculator.getPointByOriginAngleAndDistance(center, rotationRadians + 5 * Math.PI / 4, angularRadius);
 		Point2D p4 = Calculator.getPointByOriginAngleAndDistance(center, rotationRadians + 7 * Math.PI / 4, angularRadius);
 		addPoints(p1, p2, p3, p4);
-		crossLines.add(new Line2D.Double(p1, p3));
-		crossLines.add(new Line2D.Double(p2, p4));
+		perimeter.add(new Line2D.Double(p1, p2));
+		perimeter.add(new Line2D.Double(p2, p3));
+		perimeter.add(new Line2D.Double(p3, p4));
+		perimeter.add(new Line2D.Double(p4, p1));
 		this.rotationRadians = rotationRadians;
 	}
 	
@@ -67,9 +69,9 @@ public class BuildingLocation extends Polygon {
 		}
 		return location.contains(center) || this.contains(location.center);
 	}
-	public boolean intersects(Line2D line) {
-		for (Line2D crossLine : crossLines) {
-			if (line.intersectsLine(crossLine)) {
+	public boolean intersects(Line2D otherLine) {
+		for (Line2D line : perimeter) {
+			if (line.intersectsLine(otherLine)) {
 				return true;
 			}
 		}
