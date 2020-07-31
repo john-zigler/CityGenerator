@@ -19,12 +19,14 @@ public class Building {
 	private Person founder;
 	private BuildingLocation location;
 	private StreetSegment streetSegment;
+	private Person owner;
 	
 	public Building(String name, BuildingType buildingType, Person founder, BuildingLocation location, StreetSegment streetSegment) {
 		this.id = WorldConfig.getNextId();
 		this.name = name;
 		this.buildingType = buildingType;
 		this.founder = founder;
+		this.owner = founder;
 		if (founder != null) {
 			founder.addPlaceFounded(this);
 		}
@@ -57,6 +59,9 @@ public class Building {
 		return employees;
 	}
 	public void addEmployee(Person employee) {
+		if (this.owner == null && buildingType.equals(employee.getProfession().getProprietorOf())) {
+			this.owner = employee;
+		}
 		if (!this.employees.contains(employee)) {
 			this.employees.add(employee);
 		}
@@ -70,8 +75,20 @@ public class Building {
 	public BuildingLocation getLocation() {
 		return location;
 	}
+	public void setLocation(BuildingLocation location) {
+		this.location = location;
+	}
 	public StreetSegment getStreetSegment() {
 		return streetSegment;
+	}
+	public void setStreetSegment(StreetSegment streetSegment) {
+		this.streetSegment = streetSegment;
+	}
+	public Person getOwner() {
+		return owner;
+	}
+	public void setOwner(Person owner) {
+		this.owner = owner;
 	}
 
 	public List<Profession> getAvailablePostions() {

@@ -80,6 +80,9 @@ public class StreetSegment {
 	public void addBuilding(Building building) {
 		buildings.put(building, Calculator.getLocationWhereLineIsClosestToPoint(line, building.getLocation().getCenter()));
 	}
+	public void removeBuilding(Building building) {
+		buildings.remove(building);
+	}
 	
 	public List<BuildingLocation> getAllLocations(BuildingType buildingType) {
 		List<BuildingLocation> locations = new ArrayList<>();

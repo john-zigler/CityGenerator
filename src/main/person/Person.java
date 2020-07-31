@@ -13,7 +13,10 @@ import java.util.stream.Collectors;
 
 import main.building.Building;
 import main.building.BuildingGenerator;
+import main.building.BuildingLocation;
 import main.city.City;
+import main.city.street.StreetGenerator;
+import main.city.street.StreetSegment;
 import main.event.Event;
 import main.person.gender.Gender;
 import main.person.profession.Profession;
@@ -34,6 +37,9 @@ public class Person {
 	public static long TIME_SPENT_HANDLING_JOB_KNOWLEDGE = 0l;
 	public static long TIME_SPENT_LOOKING_FOR_MENTORS = 0l;
 	public static long TIME_SPENT_CONSIDERING_PROFESSIONS = 0l;
+
+	private static final double MIN_DISTANCE_FOR_CALCULATING_PROPERTY_VALUE = 60;
+	private static final double MIN_PROPERTY_VALUE_BEFORE_SELLING = 100;
 	
 	private final int id = WorldConfig.getNextId();
 	private String firstName;
@@ -476,9 +482,20 @@ public class Person {
 		Date finish = new Date();
 		TIME_SPENT_HANDLING_JOB_KNOWLEDGE += (finish.getTime() - start.getTime());
 		
-//		if (placeOfEmployment != null && placeOfEmployment.get) {
-//			
-//		}
+		if (placeOfEmployment != null && placeOfEmployment.getOwner().equals(this)) {
+			double distanceToCenterOfTown = placeOfEmployment.getLocation().getCenter().distance(homeCity.getTownCenter());
+			if (distanceToCenterOfTown < MIN_DISTANCE_FOR_CALCULATING_PROPERTY_VALUE) {
+				distanceToCenterOfTown = MIN_DISTANCE_FOR_CALCULATING_PROPERTY_VALUE;
+			}
+			if (MIN_PROPERTY_VALUE_BEFORE_SELLING < homeCity.getLivingCitizens().size() * Math.pow(placeOfEmployment.getBuildingType().getRadius() / distanceToCenterOfTown, 2)) {
+				Pair<BuildingLocation, StreetSegment> newLocation = BuildingGenerator.getBestLocation(placeOfEmployment.getBuildingType(), homeCity);
+				while (newLocation == null) {
+					newLocation = BuildingGenerator.getBestLocation(placeOfEmployment.getBuildingType(), StreetGenerator.generateStreetSegmentsForWholeCity(homeCity), homeCity);
+				}
+				homeCity.moveBuilding(placeOfEmployment, newLocation.getKey(), newLocation.getValue());
+//				System.err.println("Moving " + placeOfEmployment.getName());
+			}
+		}
 	}
 	
 	//Returns a sorted list of professions with most favorable first
@@ -568,8 +585,8 @@ public class Person {
 			}
 		}
 		if (placeOfEmployment != null || !consideredProfession.isBuildingRequired()) {
-			setPlaceOfEmployment(placeOfEmployment);
 			setProfession(consideredProfession);
+			setPlaceOfEmployment(placeOfEmployment);
 		}
 	}
 	
@@ -698,6 +715,15 @@ public class Person {
 		Building oldHome = home;
 		setHome(homeCity.getGraveyard(), false);
 		homeCity.unregisterProfessional(this);
+		if (placeOfEmployment != null && placeOfEmployment.getOwner().equals(this)) {
+			for (Person employee : placeOfEmployment.getEmployees()) {
+				if (employee.getProfession().equals(this.profession)) {
+					//First result has probably been there longest
+					placeOfEmployment.setOwner(employee);
+					break;
+				}
+			}
+		}
 		setPlaceOfEmployment(null);
 		
 		List<Person> currentApprentices = new ArrayList<>(apprentices);

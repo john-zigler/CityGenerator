@@ -105,6 +105,27 @@ public class City {
 		townCenterY += (building.getLocation().getCenter().getY() - townCenterY) / this.buildings.size();
 		adjustMapEdges(building.getLocation().getBounds2D());
 	}
+	public void moveBuilding(final Building building, final BuildingLocation newLocation, final StreetSegment newStreetSegment) {
+		for (Sector sector : getSectors(building.getLocation().getBounds2D())) {
+			sector.getBuildings().remove(building);
+		}
+		for (Sector sector : getSectors(newLocation.getBounds2D())) {
+			sector.addBuilding(building);
+		}
+		building.getStreetSegment().removeBuilding(building);
+		for (BuildingLocation neighbor : building.getLocation().getNeighbors()) {
+			neighbor.getNeighbors().remove(building.getLocation());
+		}
+		townCenterX += (newLocation.getCenter().getX() - building.getLocation().getCenter().getX()) / this.buildings.size();
+		townCenterY += (newLocation.getCenter().getY() - building.getLocation().getCenter().getY()) / this.buildings.size();
+		building.setLocation(newLocation);
+		for (BuildingLocation neighbor : newLocation.getNeighbors()) {
+			neighbor.addNeighbor(newLocation);
+		}
+		building.setStreetSegment(newStreetSegment);
+		newStreetSegment.addBuilding(building);
+		adjustMapEdges(newLocation.getBounds2D());
+	}
 	public boolean containsBuildingWithName(String name) {
 		for (Building building : buildings) {
 			if (building.getName().equals(name)) {

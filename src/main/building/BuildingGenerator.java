@@ -38,7 +38,7 @@ public class BuildingGenerator {
 		return new Building(generateBuildingName(buildingType, proprieter), buildingType, proprieter, bestLocation.getKey(), bestLocation.getValue());
 	}
 	
-	private static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, City city) {
+	public static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, City city) {
 		List<StreetSegment> streetSegments = new ArrayList<>();
 		for (Street street : city.getStreets()) {
 			streetSegments.addAll(street.getSegments());
@@ -46,7 +46,7 @@ public class BuildingGenerator {
 		return getBestLocation(buildingType, streetSegments, city);
 	}
 	
-	private static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, List<StreetSegment> streetSegments, City city) {
+	public static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, List<StreetSegment> streetSegments, City city) {
 		Point2D townCenter = city.getTownCenter();
 		double bestDistance = -1;
 		BuildingLocation bestLocation = null;
