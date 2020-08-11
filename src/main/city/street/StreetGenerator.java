@@ -50,6 +50,13 @@ public class StreetGenerator {
 		return newStreet;
 	}
 	
+	public static Street generateStreet(City city, Point2D start, Point2D end) {
+		Street newStreet = new Street(generateStreetName(city), city);
+		int width = Randomizer.generateRandomNumber(MIN_STREET_WIDTH, MAX_STREET_WIDTH);
+		newStreet.addSegment(new StreetSegment(newStreet, start, end, width));
+		return newStreet;
+	}
+	
 	private static Point2D getValidStartingLocation(City city, Building buildingAtIntersection, int width, double angle) {
 		BuildingLocation loc = buildingAtIntersection.getLocation();
 		double perpendicularAngle = (angle + Math.PI / 2) % (2 * Math.PI);
@@ -84,55 +91,51 @@ public class StreetGenerator {
 		return Calculator.getPointOfIntersectionBetweenTwoLines(angle, start, buildingAtIntersection.getStreetSegment().getAngle(), buildingAtIntersection.getStreetSegment().getLine().getP1());
 	}
 	
-	public static List<StreetSegment> generateStreetSegmentsForWholeCity(City city) {
-		List<StreetSegment> newSegments = new ArrayList<>();
+	public static List<StreetSegment> getStreetEnds(City city) {
+		List<StreetSegment> ends = new ArrayList<>();
 		for (Street street : city.getStreets()) {
-			newSegments.addAll(generateStreetSegmentsForStreet(street));
+			ends.addAll(street.getEnds());
 		}
-//		city.renderMap("C:/CityGenerator/longerStreets" + new Date().getTime());
-		return newSegments;
+		return ends;
 	}
 	
-	public static List<StreetSegment> generateStreetSegmentsForStreet(Street street) {
+	public static List<StreetSegment> generateStreetSegments(List<StreetSegment> parentSegments) {
 		List<StreetSegment> newSegments = new ArrayList<>();
-		for (StreetSegment end : street.getEnds()) {
-			StreetSegment newSegment = generateStreetSegment(end);
+		for (StreetSegment parentSegment : parentSegments) {
+			StreetSegment newSegment = generateStreetSegment(parentSegment);
 			if (newSegment != null) {
 				newSegments.add(newSegment);
 			}
 		}
-		for (StreetSegment segment : newSegments) {
-			segment.getStreet().addSegment(segment);
-		}
 		return newSegments;
 	}
 	
-	private static StreetSegment generateStreetSegment(StreetSegment parent) {
-		if (parent.isBlocked()) {
+	private static StreetSegment generateStreetSegment(StreetSegment parentSegment) {
+		if (parentSegment.isBlocked()) {
 			return null;
 		}
-		Point2D start = parent.getLine().getP2();
+		Point2D start = parentSegment.getLine().getP2();
 		Point2D end;
 		int attempts = 0;
 		int width;
 		double angle;
 		do {
-			width = parent.getWidth() + Randomizer.generateRandomNumber(-1, 1);
+			width = parentSegment.getWidth() + Randomizer.generateRandomNumber(-1, 1);
 			if (width < MIN_STREET_WIDTH) {
 				width = MIN_STREET_WIDTH;
 			} else if (width > MAX_STREET_WIDTH) {
 				width = MAX_STREET_WIDTH;
 			}
 			int length = Randomizer.generateRandomNumber(MIN_STREET_LENGTH, MAX_STREET_LENGTH);
-			angle = Randomizer.generateRandomStreetAngle(parent.getAngle());
+			angle = Randomizer.generateRandomStreetAngle(parentSegment.getAngle());
 			end = new Point2D.Double(start.getX() + length * Math.cos(angle), start.getY() + length * Math.sin(angle));
 			attempts++;
 			if (attempts > MAX_ATTEMPTS) {
-				parent.setBlocked(true);
+				parentSegment.setBlocked(true);
 				return null;
 			}
-		} while (!CollisionDetector.isStreetLocationValid(new Line2D.Double(start, end), width / 2, parent.getStreet().getCity()));
-		return new StreetSegment(parent, end, width);
+		} while (!CollisionDetector.isStreetLocationValid(new Line2D.Double(start, end), width / 2, parentSegment.getStreet().getCity()));
+		return new StreetSegment(parentSegment, end, width);
 	}
 	
 	public static String generateStreetName(City city) {

@@ -1,17 +1,13 @@
 package main.city;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.xml.bind.JAXBException;
 
 import main.building.BuildingGenerator;
-import main.city.street.StreetGenerator;
 import main.city.street.StreetSegment;
 import main.exceptions.InitializationException;
 import main.person.Person;
@@ -53,10 +49,10 @@ public class CityGenerator {
 //		HtmlOutputter outputter = new HtmlOutputter("C:/CityGenerator/" + city.getName() + "_" + new Date().getTime() + "/");
 //		outputter.outputCity(city);
 		city.renderMap("C:/CityGenerator/" + cityName);
-		System.out.println("Time spent detecting collecting building locations: " + BuildingGenerator.getTimeSpentCollectingLocations());
-		System.out.println("Time spent detecting collecting corner lots: " + StreetSegment.getTimeSpentGettingCornerLots());
-		System.out.println("Time spent detecting collecting center lots: " + StreetSegment.getTimeSpentGettingCenterLots());
-		System.out.println("Time spent detecting collecting neighbor lots: " + StreetSegment.getTimeSpentGettingNeighborLots());
+		System.out.println("Time spent collecting building locations: " + BuildingGenerator.getTimeSpentCollectingLocations());
+		System.out.println("Time spent collecting corner lots: " + StreetSegment.getTimeSpentGettingCornerLots());
+		System.out.println("Time spent collecting center lots: " + StreetSegment.getTimeSpentGettingCenterLots());
+		System.out.println("Time spent collecting neighbor lots: " + StreetSegment.getTimeSpentGettingNeighborLots());
 		System.out.println();
 		System.out.println("Time spent detecting building collisions: " + CollisionDetector.getTimeSpentDetectingBuildingCollisions());
 		System.out.println("Time spent detecting street collisions: " + CollisionDetector.getTimeSpentDetectingStreetCollisions());

@@ -10,4 +10,6 @@
 		<namingConvention>%noun% of %firstName%</namingConvention>
 	</namingRules>
 	<radius>10</radius>
+	
+	<buildingAffinity buildingTypeName="House" value="5" />
 </buildingType>

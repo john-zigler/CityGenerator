@@ -1,8 +1,15 @@
 package main.building;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.building.floor.Floor;
+import main.building.floor.FloorGenerator;
 import main.city.street.StreetSegment;
 import main.person.Person;
 import main.person.profession.Profession;
@@ -20,6 +27,7 @@ public class Building {
 	private BuildingLocation location;
 	private StreetSegment streetSegment;
 	private Person owner;
+	private List<Floor> floors;
 	
 	public Building(String name, BuildingType buildingType, Person founder, BuildingLocation location, StreetSegment streetSegment) {
 		this.id = WorldConfig.getNextId();
@@ -38,7 +46,9 @@ public class Building {
 		if (streetSegment != null) {
 			//Street should only be null for the first building in town
 			streetSegment.addBuilding(this);
+			streetSegment.getStreet().addSegment(streetSegment);
 		}
+		floors = FloorGenerator.generateFloors(buildingType, true, true, 3);
 	}
 
 	public String getName() {
@@ -124,6 +134,23 @@ public class Building {
 			totalScore += character.getImpressionOf(employee) * employee.getImpressionOf(character);
 		}
 		return employees.isEmpty() ? 10.0 : (totalScore / employees.size());
+	}
+	
+	public BufferedImage generateImageForMap() {
+		int radius = (int) (buildingType.getRadius());
+		BufferedImage image = new BufferedImage(radius * 4, radius * 4, BufferedImage.TYPE_4BYTE_ABGR);
+		Graphics2D graphics = image.createGraphics();
+		graphics.setColor(Color.GRAY);
+		for (Floor floor : floors) {
+			graphics.drawImage(floor.generateImageForMap(), radius, radius, null);
+		}
+		graphics.setColor(Color.BLACK);
+		graphics.drawLine(radius * 2, radius * 2, radius * 3, radius * 2);
+		
+		AffineTransform tx = AffineTransform.getRotateInstance(location.getRotationRadians(), image.getWidth() / 2, image.getHeight() / 2);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		
+		return op.filter(image, null);
 	}
 	
 	public String toString() {

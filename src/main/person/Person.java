@@ -15,7 +15,6 @@ import main.building.Building;
 import main.building.BuildingGenerator;
 import main.building.BuildingLocation;
 import main.city.City;
-import main.city.street.StreetGenerator;
 import main.city.street.StreetSegment;
 import main.event.Event;
 import main.person.gender.Gender;
@@ -489,11 +488,8 @@ public class Person {
 			}
 			if (MIN_PROPERTY_VALUE_BEFORE_SELLING < homeCity.getLivingCitizens().size() * Math.pow(placeOfEmployment.getBuildingType().getRadius() / distanceToCenterOfTown, 2)) {
 				Pair<BuildingLocation, StreetSegment> newLocation = BuildingGenerator.getBestLocation(placeOfEmployment.getBuildingType(), homeCity);
-				while (newLocation == null) {
-					newLocation = BuildingGenerator.getBestLocation(placeOfEmployment.getBuildingType(), StreetGenerator.generateStreetSegmentsForWholeCity(homeCity), homeCity);
-				}
 				homeCity.moveBuilding(placeOfEmployment, newLocation.getKey(), newLocation.getValue());
-//				System.err.println("Moving " + placeOfEmployment.getName());
+				System.err.println("Moving " + placeOfEmployment.getName());
 			}
 		}
 	}

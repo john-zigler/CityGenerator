@@ -23,8 +23,16 @@ public class Street {
 		return segments;
 	}
 	public void addSegment(StreetSegment segment) {
-		this.segments .add(segment);
+		if (segments.contains(segment)) {
+			//Don't add duplicates
+			return;
+		}
+		this.segments.add(segment);
 		if (segment.getParent() != null) {
+			if (!segments.contains(segment.getParent())) {
+				//Recursive call to add parent segments
+				addSegment(segment.getParent());
+			}
 			this.ends.remove(segment.getParent());
 		}
 		this.ends.add(segment);

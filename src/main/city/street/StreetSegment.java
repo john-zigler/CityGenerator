@@ -24,6 +24,8 @@ public class StreetSegment {
 	private static long timeSpentGettingNeighborLots = 0;
 	private static final double INCREMENT_DISTANCE = 2.0;
 	private static final BuildingLocation END_OF_STREET = new BuildingLocation(new Point2D.Double(0, 0), 0, 0);
+	private static final double HALF_PI = Math.PI / 2;
+	private static final double THREE_HALVES_PI = 3 * HALF_PI;
 	
 	private Street street;
 	private int width;
@@ -80,8 +82,19 @@ public class StreetSegment {
 	public void addBuilding(Building building) {
 		buildings.put(building, Calculator.getLocationWhereLineIsClosestToPoint(line, building.getLocation().getCenter()));
 	}
-	public void removeBuilding(Building building) {
-		buildings.remove(building);
+	
+	public void replaceBuildingWithStreet(Building building) {
+		if (buildings.containsKey(building)) {
+			for (BuildingLocation neighbor : building.getLocation().getNeighbors()) {
+				neighbor.getNeighbors().remove(building.getLocation());
+			}
+			Street newStreet = StreetGenerator.generateStreet(street.getCity(), buildings.get(building), building.getLocation().getCenter());
+			street.getCity().addStreet(newStreet);
+			for (StreetSegment segment : newStreet.getSegments()) {
+				street.getCity().addStreetSegmentToSectors(segment);
+			}
+			buildings.remove(building);
+		}
 	}
 	
 	public List<BuildingLocation> getAllLocations(BuildingType buildingType) {
@@ -110,7 +123,7 @@ public class StreetSegment {
 		Point2D point2 = Calculator.getPointByOriginAngleAndDistance(line.getP2(), angle + Math.PI, buildingType.getRadius());
 		boolean consumesWholeStreet = (point1.distance(line.getP2()) <= buildingType.getRadius());
 		for (Point2D point : Arrays.asList(point1, point2)) {
-			for (double ang : Arrays.asList(angle + Math.PI / 2, angle + 3 * Math.PI / 2)) {
+			for (double ang : Arrays.asList(angle + HALF_PI, angle + THREE_HALVES_PI)) {
 				BuildingLocation potentialLocation = new BuildingLocation(
 						Calculator.getPointByOriginAngleAndDistance(point, ang, buildingType.getRadius() + this.width / 2.0), buildingType.getRadius(), ang + Math.PI);
 				if (CollisionDetector.isBuildingLocationValid(potentialLocation, street.getCity())) {
@@ -127,7 +140,7 @@ public class StreetSegment {
 	
 	private List<BuildingLocation> getCenterLots(BuildingType buildingType) {
 		List<BuildingLocation> locations = new ArrayList<>();
-		for (double ang : Arrays.asList(angle + Math.PI / 2, angle + 3 * Math.PI / 2)) {
+		for (double ang : Arrays.asList(angle + HALF_PI, angle + THREE_HALVES_PI)) {
 			BuildingLocation potentialLocation = new BuildingLocation(
 					Calculator.getPointByOriginAngleAndDistance(centerPoint, ang, buildingType.getRadius() + this.width / 2.0), buildingType.getRadius(), ang + Math.PI);
 			if (CollisionDetector.isBuildingLocationValid(potentialLocation, street.getCity())) {

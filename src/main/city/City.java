@@ -7,7 +7,6 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -87,7 +86,7 @@ public class City {
 		return this.buildings;
 	}
 	public void addBuilding(final Building building) {
-		addBuilding(building, Randomizer.rollAgainstOdds(2 * building.getBuildingType().getRadius() / (double) WorldConfig.getLargestRadius()));
+		addBuilding(building, Randomizer.rollAgainstOdds(0.35));//building.getBuildingType().getRadius() / (double) WorldConfig.getLargestRadius()));
 	}
 	public void addBuilding(final Building building, boolean generateStreet) {
 		this.buildings.add(building);
@@ -112,10 +111,7 @@ public class City {
 		for (Sector sector : getSectors(newLocation.getBounds2D())) {
 			sector.addBuilding(building);
 		}
-		building.getStreetSegment().removeBuilding(building);
-		for (BuildingLocation neighbor : building.getLocation().getNeighbors()) {
-			neighbor.getNeighbors().remove(building.getLocation());
-		}
+		building.getStreetSegment().replaceBuildingWithStreet(building);
 		townCenterX += (newLocation.getCenter().getX() - building.getLocation().getCenter().getX()) / this.buildings.size();
 		townCenterY += (newLocation.getCenter().getY() - building.getLocation().getCenter().getY()) / this.buildings.size();
 		building.setLocation(newLocation);
@@ -337,8 +333,12 @@ public class City {
 		Graphics2D mapGraphics = mapImage.createGraphics();
 		AffineTransform tx = AffineTransform.getTranslateInstance(-minX, -minY);
 		for (Building building : buildings) {
-			mapGraphics.setColor(Color.GRAY);
-			mapGraphics.fill(tx.createTransformedShape(building.getLocation()));
+//			mapGraphics.setColor(Color.GRAY);
+//			mapGraphics.draw(tx.createTransformedShape(building.getLocation()));
+			BufferedImage buildingImage = building.generateImageForMap();
+			int x = (int) (building.getLocation().getCenter().getX() - minX - building.getBuildingType().getRadius() * 2);
+			int y = (int) (building.getLocation().getCenter().getY() - minY - building.getBuildingType().getRadius() * 2);
+			mapGraphics.drawImage(buildingImage, x, y, null);
 		}
 		for (Street street : streets) {
 			for (StreetSegment segment : street.getSegments()) {

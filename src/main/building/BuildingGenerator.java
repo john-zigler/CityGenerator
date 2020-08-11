@@ -1,6 +1,5 @@
 package main.building;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,9 +30,6 @@ public class BuildingGenerator {
 	public static Building generateBuilding(BuildingType buildingType, Person proprieter, City city) {
 		long start = new Date().getTime();
 		Pair<BuildingLocation, StreetSegment> bestLocation = getBestLocation(buildingType, city);
-		while (bestLocation == null) {
-			bestLocation = getBestLocation(buildingType, StreetGenerator.generateStreetSegmentsForWholeCity(city), city);
-		}
 		timeSpentGeneratingBuildings += new Date().getTime() - start;
 		return new Building(generateBuildingName(buildingType, proprieter), buildingType, proprieter, bestLocation.getKey(), bestLocation.getValue());
 	}
@@ -43,13 +39,18 @@ public class BuildingGenerator {
 		for (Street street : city.getStreets()) {
 			streetSegments.addAll(street.getSegments());
 		}
-		return getBestLocation(buildingType, streetSegments, city);
+		//Add new street segments to initial consideration
+		List<StreetSegment> newStreetSegments = StreetGenerator.generateStreetSegments(StreetGenerator.getStreetEnds(city));
+		streetSegments.addAll(newStreetSegments);
+		Pair<BuildingLocation, StreetSegment> bestLocation = getBestLocation(buildingType, streetSegments, city);
+		while (bestLocation == null) {
+			newStreetSegments = StreetGenerator.generateStreetSegments(newStreetSegments);
+			bestLocation = getBestLocation(buildingType, newStreetSegments, city);
+		}
+		return bestLocation;
 	}
 	
 	public static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, List<StreetSegment> streetSegments, City city) {
-		Point2D townCenter = city.getTownCenter();
-		double bestDistance = -1;
-		BuildingLocation bestLocation = null;
 		Map<BuildingLocation, StreetSegment> locations = new HashMap<>();
 
 		long time1 = new Date().getTime();
@@ -59,13 +60,7 @@ public class BuildingGenerator {
 			}
 		}
 		long time2 = new Date().getTime();
-		for (BuildingLocation location : locations.keySet()) {
-			double distance = location.getCenter().distance(townCenter);
-			if (bestLocation == null || distance < bestDistance) {
-				bestLocation = location;
-				bestDistance = distance;
-			}
-		}
+		BuildingLocation bestLocation = getBestLocation(buildingType, locations.keySet(), city);
 		long time3 = new Date().getTime();
 
 		timeSpentCollectingLocations += time2 - time1;
@@ -75,6 +70,21 @@ public class BuildingGenerator {
 		} else {
 			return null;
 		}
+	}
+	
+	private static BuildingLocation getBestLocation(BuildingType buildingType, Set<BuildingLocation> locations, City city) {
+		double bestScore = -1;
+		BuildingLocation bestLocation = null;
+		for (BuildingLocation location : locations) {
+			for (Building building : city.getBuildings()) {
+				double score = buildingType.getBuildingTypeAffinity(building.getBuildingType().getName()) / location.getCenter().distanceSq(building.getLocation().getCenter());
+				if (bestLocation == null || score > bestScore) {
+					bestLocation = location;
+					bestScore = score;
+				}
+			}
+		}
+		return bestLocation;
 	}
 	
 	public static String generateBuildingName(BuildingType buildingType, Person proprieter) {

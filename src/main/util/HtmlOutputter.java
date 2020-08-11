@@ -41,7 +41,7 @@ public class HtmlOutputter {
 		return stripUnwantedChars(city.getName() + ".html");
 	}
 	public void outputCity(City city) {
-		System.out.println("Outputting files...");
+		System.out.println("Outputting HTML files...");
 		StringBuilder fileContents = new StringBuilder(HTML_TOP);
 		fileContents.append("<h1>The City of " + city.getName() + "!</h1>");
 		fileContents.append("<h4>Year: " + WorldConfig.getYear() + "</h4>");

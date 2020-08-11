@@ -1,7 +1,9 @@
 package main.building;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,6 +22,11 @@ public class BuildingType {
 	private boolean houseIncluded = false;
 	@XmlElement
 	private int radius = Randomizer.generateRandomNumber(10, 30);
+	@XmlElement
+	private int floorplanComplexity = 2;
+	@XmlElement(name="buildingAffinity")
+	private List<BuildingTypeAffinity> buildingTypeAffinities = new ArrayList<>();
+	private Map<String, Integer> buildingTypeAffinityMap;
 	
 	public BuildingType(String name, List<String> positions, NamingRules namingRules, boolean houseIncluded, int radius) {
 		this.name = name;
@@ -30,6 +37,13 @@ public class BuildingType {
 	}
 	public BuildingType() {
 		//Explicit default constructor
+	}
+	
+	private void initializeBuildingTypeAffinityMap() {
+		buildingTypeAffinityMap = new HashMap<>();
+		for (BuildingTypeAffinity buildingTypeAffinity : buildingTypeAffinities) {
+			buildingTypeAffinityMap.put(buildingTypeAffinity.getBuildingTypeName(), buildingTypeAffinity.getValue());
+		}
 	}
 
 	public String getName() {
@@ -49,5 +63,14 @@ public class BuildingType {
 	}
 	public int getRadius() {
 		return radius;
+	}
+	public int getFloorplanComplexity() {
+		return floorplanComplexity;
+	}
+	public Integer getBuildingTypeAffinity(String buildingTypeName) {
+		if (buildingTypeAffinityMap == null) {
+			initializeBuildingTypeAffinityMap();
+		}
+		return buildingTypeAffinityMap.computeIfAbsent(buildingTypeName, btn -> 1);
 	}
 }
