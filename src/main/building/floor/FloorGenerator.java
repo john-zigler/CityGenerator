@@ -8,6 +8,15 @@ import main.building.BuildingType;
 import main.util.Randomizer;
 
 public class FloorGenerator {
+	public static List<Floor> generateFloors(BuildingType buildingType, boolean includeCellar, boolean includeLoft, int numberOfFloors) {
+		if (buildingType.getIncludedBuildings() != null && !buildingType.getIncludedBuildings().isEmpty()) {
+			return new ArrayList<>();
+		} else if (buildingType.isRound()) {
+			return generateRoundFloors(buildingType, includeCellar, includeLoft, numberOfFloors);
+		}
+		return generateRectangularFloors(buildingType, includeCellar, includeLoft, numberOfFloors);
+	}
+
 	/**
 	 * This produces a list of floors that describe a building with a jettied architecture
 	 * https://www.youtube.com/watch?v=zBVPcr7VjyQ
@@ -18,7 +27,7 @@ public class FloorGenerator {
 	 * @param numberOfFloors the number of floors to generate, not including the cellar or loft
 	 * @return the list of floors
 	 */
-	public static List<Floor> generateFloors(BuildingType buildingType, boolean includeCellar, boolean includeLoft, int numberOfFloors) {
+	private static List<Floor> generateRectangularFloors(BuildingType buildingType, boolean includeCellar, boolean includeLoft, int numberOfFloors) {
 		int radius = buildingType.getRadius();
 		List<Floor> floors = new ArrayList<>();
 		List<Rectangle> originalRectangles = generateRectangles(radius, buildingType.getFloorplanComplexity());
@@ -33,6 +42,22 @@ public class FloorGenerator {
 		}
 		if (includeLoft) {
 			floors.add(new Floor(radius, rectangles));
+		}
+		return floors;
+	}
+
+	private static List<Floor> generateRoundFloors(BuildingType buildingType, boolean includeCellar, boolean includeLoft, int numberOfFloors) {
+		int radius = buildingType.getRadius();
+		List<Floor> floors = new ArrayList<>();
+		if (includeCellar) {
+			floors.add(new Floor(radius, radius - 1));
+		}
+		floors.add(new Floor(radius, radius));
+		for (int i = 1; i < numberOfFloors; i++) {
+			floors.add(new Floor(radius, radius));
+		}
+		if (includeLoft) {
+			floors.add(new Floor(radius, radius));
 		}
 		return floors;
 	}

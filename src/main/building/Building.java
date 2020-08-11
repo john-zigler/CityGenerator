@@ -3,6 +3,7 @@ package main.building;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -11,8 +12,12 @@ import java.util.List;
 import main.building.floor.Floor;
 import main.building.floor.FloorGenerator;
 import main.city.street.StreetSegment;
+import main.exceptions.BuildingCollisionException;
+import main.exceptions.StreetCollisionException;
 import main.person.Person;
 import main.person.profession.Profession;
+import main.util.CollisionDetector;
+import main.util.Randomizer;
 import main.util.WorldConfig;
 
 public class Building {
@@ -28,6 +33,7 @@ public class Building {
 	private StreetSegment streetSegment;
 	private Person owner;
 	private List<Floor> floors;
+	private List<Building> includedBuildings = new ArrayList<>();
 	
 	public Building(String name, BuildingType buildingType, Person founder, BuildingLocation location, StreetSegment streetSegment) {
 		this.id = WorldConfig.getNextId();
@@ -39,14 +45,16 @@ public class Building {
 			founder.addPlaceFounded(this);
 		}
 		this.location = location;
-		for (BuildingLocation neighbor : location.getNeighbors()) {
-			neighbor.addNeighbor(location);
-		}
-		this.streetSegment = streetSegment;
-		if (streetSegment != null) {
-			//Street should only be null for the first building in town
-			streetSegment.addBuilding(this);
-			streetSegment.getStreet().addSegment(streetSegment);
+		if (location != null) {
+			for (BuildingLocation neighbor : location.getNeighbors()) {
+				neighbor.addNeighbor(location);
+			}
+			this.streetSegment = streetSegment;
+			if (streetSegment != null) {
+				//Street should only be null for the first building in town
+				streetSegment.addBuilding(this);
+				streetSegment.getStreet().addSegment(streetSegment);
+			}
 		}
 		floors = FloorGenerator.generateFloors(buildingType, true, true, 3);
 	}
@@ -101,6 +109,35 @@ public class Building {
 		this.owner = owner;
 	}
 
+	public List<Building> getIncludedBuildings() {
+		return includedBuildings;
+	}
+
+	public void addIncludedBuilding(Building includedBuilding) {
+		int thisRadius = this.buildingType.getRadius();
+		int includedBuildingRadius = includedBuilding.buildingType.getRadius();
+		if (this.includedBuildings.isEmpty()) {
+			//First building should be at the edge of the property, facing the street.
+			Point2D center = new Point2D.Double(thisRadius * 2 - includedBuildingRadius - 2, thisRadius);
+			includedBuilding.location = new BuildingLocation(center, includedBuildingRadius, 0);
+		} else {
+			Exception caughtException;
+			do {
+				caughtException = null;
+				double x = Randomizer.generateRandomNumber(includedBuildingRadius + 2, thisRadius * 2 - includedBuildingRadius - 2);
+				double y = Randomizer.generateRandomNumber(includedBuildingRadius + 2, thisRadius * 2 - includedBuildingRadius - 2);
+				Point2D center = new Point2D.Double(x, y);
+				includedBuilding.location = new BuildingLocation(center, includedBuildingRadius, Randomizer.generateRandomNumber(0, 2 * Math.PI));
+				try {
+					CollisionDetector.checkBuildingLocationValid(includedBuilding.location, this.includedBuildings, null);
+				} catch (BuildingCollisionException | StreetCollisionException e) {
+					caughtException = e;
+				}
+			} while (caughtException != null);
+		}
+		this.includedBuildings.add(includedBuilding);
+	}
+
 	public List<Profession> getAvailablePostions() {
 		List<Profession> availablePostions = new ArrayList<>();
 		List<String> positions = new ArrayList<>(buildingType.getPositions());
@@ -140,12 +177,21 @@ public class Building {
 		int radius = (int) (buildingType.getRadius());
 		BufferedImage image = new BufferedImage(radius * 4, radius * 4, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics2D graphics = image.createGraphics();
-		graphics.setColor(Color.GRAY);
-		for (Floor floor : floors) {
-			graphics.drawImage(floor.generateImageForMap(), radius, radius, null);
+		if (includedBuildings != null && !includedBuildings.isEmpty()) {
+			graphics.setColor(Color.GRAY);
+			graphics.drawRect(radius, radius, radius * 2, radius * 2);
+			for (Building includedBuilding : includedBuildings) {
+				int x = radius + (int) includedBuilding.location.getCenter().getX() - 2 * includedBuilding.buildingType.getRadius();
+				int y = radius + (int) includedBuilding.location.getCenter().getY() - 2 * includedBuilding.buildingType.getRadius();
+				graphics.drawImage(includedBuilding.generateImageForMap(), x, y, null);
+			}
 		}
-		graphics.setColor(Color.BLACK);
-		graphics.drawLine(radius * 2, radius * 2, radius * 3, radius * 2);
+		for (Floor floor : floors) {
+//			graphics.drawImage(floor.generateImageForMap(buildingType.getName().equals("House") ? Color.RED : Color.GRAY), radius, radius, null);
+			graphics.drawImage(floor.generateImageForMap(Color.GRAY), radius, radius, null);
+		}
+//		graphics.setColor(Color.BLACK);
+//		graphics.drawLine(radius * 2, radius * 2, radius * 3, radius * 2);
 		
 		AffineTransform tx = AffineTransform.getRotateInstance(location.getRotationRadians(), image.getWidth() / 2, image.getHeight() / 2);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);

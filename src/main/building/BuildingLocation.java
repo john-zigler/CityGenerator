@@ -86,7 +86,6 @@ public class BuildingLocation extends Polygon {
 		return false;
 	}
 	
-	
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof BuildingLocation) {

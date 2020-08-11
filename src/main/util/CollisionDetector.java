@@ -2,6 +2,7 @@ package main.util;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,20 +44,24 @@ public class CollisionDetector {
 		checkBuildingLocationValid(location, buildings, segments);
 	}
 	
-	public static void checkBuildingLocationValid(BuildingLocation location, Set<Building> buildings, Set<StreetSegment> segments) throws BuildingCollisionException, StreetCollisionException {
+	public static void checkBuildingLocationValid(BuildingLocation location, Collection<Building> buildings, Collection<StreetSegment> segments) throws BuildingCollisionException, StreetCollisionException {
 		long start = new Date().getTime();
-		for (Building building : buildings) {
-			if (building.getLocation().overlaps(location)) {
-				timeSpentDetectingBuildingCollisions = getTimeSpentDetectingBuildingCollisions() + new Date().getTime() - start;
-				throw new BuildingCollisionException();
+		if (buildings != null) {
+			for (Building building : buildings) {
+				if (building.getLocation().overlaps(location)) {
+					timeSpentDetectingBuildingCollisions = getTimeSpentDetectingBuildingCollisions() + new Date().getTime() - start;
+					throw new BuildingCollisionException();
+				}
 			}
 		}
 		timeSpentDetectingBuildingCollisions = getTimeSpentDetectingBuildingCollisions() + new Date().getTime() - start;
 		long start2 = new Date().getTime();
-		for (StreetSegment segment : segments) {
-			if (buildingCollidesWithStreet(location, segment.getLine(), segment.getWidth() / 2.0)) {
-				timeSpentDetectingStreetCollisions = getTimeSpentDetectingStreetCollisions() + new Date().getTime() - start2;
-				throw new StreetCollisionException();
+		if (segments != null) {
+			for (StreetSegment segment : segments) {
+				if (buildingCollidesWithStreet(location, segment.getLine(), segment.getWidth() / 2.0)) {
+					timeSpentDetectingStreetCollisions = getTimeSpentDetectingStreetCollisions() + new Date().getTime() - start2;
+					throw new StreetCollisionException();
+				}
 			}
 		}
 		timeSpentDetectingStreetCollisions = getTimeSpentDetectingStreetCollisions() + new Date().getTime() - start2;

@@ -6,4 +6,6 @@
 	<position>Beekeeper</position>
 	<position>Beekeeper</position>
 	<houseIncluded>true</houseIncluded>
+	<radius>100</radius>
+	<includedBuilding>House</includedBuilding>
 </buildingType>

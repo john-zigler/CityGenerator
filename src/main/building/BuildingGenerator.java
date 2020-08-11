@@ -16,6 +16,7 @@ import main.person.Person;
 import main.util.Constants;
 import main.util.Pair;
 import main.util.Randomizer;
+import main.util.WorldConfig;
 
 public class BuildingGenerator {
 	private static final int MAX_ATTEMPTS = 20;
@@ -31,7 +32,15 @@ public class BuildingGenerator {
 		long start = new Date().getTime();
 		Pair<BuildingLocation, StreetSegment> bestLocation = getBestLocation(buildingType, city);
 		timeSpentGeneratingBuildings += new Date().getTime() - start;
-		return new Building(generateBuildingName(buildingType, proprieter), buildingType, proprieter, bestLocation.getKey(), bestLocation.getValue());
+		Building newBuilding = new Building(generateBuildingName(buildingType, proprieter), buildingType, proprieter, bestLocation.getKey(), bestLocation.getValue());
+		if (buildingType.getIncludedBuildings() != null && !buildingType.getIncludedBuildings().isEmpty()) {
+			for (String buildingTypeName : buildingType.getIncludedBuildings()) {
+				BuildingType includedBuildingType = WorldConfig.getBuildingTypeByName(buildingTypeName);
+				newBuilding.addIncludedBuilding(
+						new Building(generateBuildingName(includedBuildingType, proprieter), includedBuildingType, proprieter, null, bestLocation.getValue()));
+			}
+		}
+		return newBuilding;
 	}
 	
 	public static Pair<BuildingLocation, StreetSegment> getBestLocation(BuildingType buildingType, City city) {
@@ -76,12 +85,13 @@ public class BuildingGenerator {
 		double bestScore = -1;
 		BuildingLocation bestLocation = null;
 		for (BuildingLocation location : locations) {
+			double score = 0;
 			for (Building building : city.getBuildings()) {
-				double score = buildingType.getBuildingTypeAffinity(building.getBuildingType().getName()) / location.getCenter().distanceSq(building.getLocation().getCenter());
-				if (bestLocation == null || score > bestScore) {
-					bestLocation = location;
-					bestScore = score;
-				}
+				score += buildingType.getBuildingTypeAffinity(building.getBuildingType().getName()) / location.getCenter().distanceSq(building.getLocation().getCenter());
+			}
+			if (bestLocation == null || score > bestScore) {
+				bestLocation = location;
+				bestScore = score;
 			}
 		}
 		return bestLocation;

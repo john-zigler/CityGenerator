@@ -7,4 +7,5 @@
 	<position>Miller</position>
 	<position>Miller</position>
 	<houseIncluded>true</houseIncluded>
+	<round>true</round>
 </buildingType>

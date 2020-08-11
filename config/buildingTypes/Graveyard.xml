@@ -7,4 +7,6 @@
 		<buildingType>Cemetary</buildingType>
 		<namingConvention>%cityName% %buildingType%</namingConvention>
 	</namingRules>
+	<radius>200</radius>
+	<includedBuilding>House</includedBuilding>
 </buildingType>

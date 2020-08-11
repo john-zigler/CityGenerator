@@ -111,7 +111,9 @@ public class City {
 		for (Sector sector : getSectors(newLocation.getBounds2D())) {
 			sector.addBuilding(building);
 		}
-		building.getStreetSegment().replaceBuildingWithStreet(building);
+		if (building.getStreetSegment() != null) {
+			building.getStreetSegment().replaceBuildingWithStreet(building);
+		}
 		townCenterX += (newLocation.getCenter().getX() - building.getLocation().getCenter().getX()) / this.buildings.size();
 		townCenterY += (newLocation.getCenter().getY() - building.getLocation().getCenter().getY()) / this.buildings.size();
 		building.setLocation(newLocation);

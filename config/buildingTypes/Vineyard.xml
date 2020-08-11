@@ -11,4 +11,5 @@
 	<position>Vintner</position>
 	<houseIncluded>true</houseIncluded>
 	<radius>150</radius>
+	<includedBuilding>House</includedBuilding>
 </buildingType>

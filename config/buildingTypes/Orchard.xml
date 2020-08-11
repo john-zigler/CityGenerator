@@ -22,4 +22,5 @@
 	<position>Orchardist</position>
 	<houseIncluded>true</houseIncluded>
 	<radius>200</radius>
+	<includedBuilding>House</includedBuilding>
 </buildingType>

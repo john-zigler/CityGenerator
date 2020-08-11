@@ -21,12 +21,16 @@ public class BuildingType {
 	@XmlElement
 	private boolean houseIncluded = false;
 	@XmlElement
+	private boolean round = false;
+	@XmlElement
 	private int radius = Randomizer.generateRandomNumber(10, 30);
 	@XmlElement
 	private int floorplanComplexity = 2;
 	@XmlElement(name="buildingAffinity")
 	private List<BuildingTypeAffinity> buildingTypeAffinities = new ArrayList<>();
 	private Map<String, Integer> buildingTypeAffinityMap;
+	@XmlElement(name="includedBuilding")
+	private List<String> includedBuildings = new ArrayList<>();
 	
 	public BuildingType(String name, List<String> positions, NamingRules namingRules, boolean houseIncluded, int radius) {
 		this.name = name;
@@ -61,6 +65,9 @@ public class BuildingType {
 	public boolean isHouse() {
 		return name.equals("House");
 	}
+	public boolean isRound() {
+		return round;
+	}
 	public int getRadius() {
 		return radius;
 	}
@@ -72,5 +79,8 @@ public class BuildingType {
 			initializeBuildingTypeAffinityMap();
 		}
 		return buildingTypeAffinityMap.computeIfAbsent(buildingTypeName, btn -> 1);
+	}
+	public List<String> getIncludedBuildings() {
+		return includedBuildings;
 	}
 }
