@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Cobblery</name>
+	<position>Cobbler</position>
+	<position>Cobbler</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Cobblery</buildingType>
+		<noun>Boots</noun>
+		<noun>Shoes</noun>
+		<noun>Sandals</noun>
+		<noun>Slippers</noun>
+		<adjective>Badass</adjective>
+		<adjective>Fine</adjective>
+		<adjective>Marvelous</adjective>
+		<adjective>Wonderful</adjective>
+		<namingConvention>%firstName%'s %adjective% %buildingType%</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%familyName% %noun%</namingConvention>
+		<namingConvention>%adjective% %noun% by %firstName%</namingConvention>
+		<namingConvention>%adjective% %noun%</namingConvention>
+		<namingConvention>%noun% &amp; Shit</namingConvention>
+	</namingRules>
+</buildingType>

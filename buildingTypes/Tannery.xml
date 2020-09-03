@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Tannery</name>
+	<position>Tanner</position>
+	<position>Tanner</position>
+	<position>Tanner</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Tannery</buildingType>
+		
+		<adjective>Arcane</adjective>
+		<adjective>Amber</adjective>
+		<adjective>Ancient</adjective>
+		<adjective>Angry</adjective>
+		<adjective>Shadow</adjective>
+		<adjective>Blue</adjective>
+		<adjective>Brown</adjective>
+		<adjective>Copper</adjective>
+		<adjective>Dancing</adjective>
+		<adjective>Ebony</adjective>
+		<adjective>Emerald</adjective>
+		<adjective>Supple</adjective>
+		<adjective>Gilt</adjective>
+		<adjective>Golden</adjective>
+		<adjective>Green</adjective>
+		<adjective>Ivory</adjective>
+		<adjective>Orange</adjective>
+		<adjective>Purple</adjective>
+		<adjective>Red</adjective>
+		<adjective>Ruby</adjective>
+		<adjective>Salty</adjective>
+		<adjective>Sapphire</adjective>
+		<adjective>Silver</adjective>
+		<adjective>Refined</adjective>
+		<adjective>Luminous</adjective>
+		<adjective>Weathered</adjective>
+		<adjective>Good</adjective>
+		<adjective>Rugged</adjective>
+		
+
+		<noun>Skin</noun>
+		<noun>Suede</noun>
+		<noun>Hide</noun>
+		<noun>Leather</noun>
+		
+		<namingConvention>%firstName%'s %adjective% %buildingType%</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%familyName% %noun%</namingConvention>
+		<namingConvention>%adjective% %noun% by %firstName%</namingConvention>
+		<namingConvention>%adjective% %noun%</namingConvention>
+		<namingConvention>%noun% &amp; Shit</namingConvention>
+	</namingRules>
+</buildingType>

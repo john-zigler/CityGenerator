@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Brewery</name>
+	<position>Brewmaster</position>
+	<position>Brewmaster</position>
+	<position>Brewmaster</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Brewery</buildingType>
+		<noun>Ales &amp; Spirits</noun>
+		<adjective>Fucking Awesome</adjective>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%familyName% %buildingType%</namingConvention>
+		<namingConvention>%adjective% %noun%</namingConvention>
+		<namingConvention>%cityName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>General Store</name>
+	<position>Shopkeep</position>
+	<position>Shopkeep</position>
+	<position>Shopkeep</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>General Goods</buildingType>
+		<buildingType>General Store</buildingType>
+		<buildingType>General Store</buildingType>
+		
+		<adjective>Old</adjective>
+		<adjective>Shitty</adjective>
+		<adjective>Shiny</adjective>
+		<adjective>Magic</adjective>
+		<adjective>Fuckin Awsome</adjective>
+		
+		<noun>Things</noun>
+		<noun>Stuff</noun>
+		<noun>Wares</noun>
+		<noun>Articles</noun>
+		<noun>Gear</noun>
+		<noun>Baggage</noun>
+		<noun>Accoutrements</noun>
+		
+		<namingConvention>%firstName%'s %noun%</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%firstName%'s %buildingType%</namingConvention>
+		<namingConvention>%adjective% %noun% &amp; Shit</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun% &amp; Shit</namingConvention>
+		<namingConvention>%noun% &amp; Shit</namingConvention>
+		<namingConvention>%familyName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

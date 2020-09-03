@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Guardhouse</name>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<position>Guard</position>
+	<namingRules>
+		<buildingType>Guardhouse</buildingType>
+		<namingConvention>%cityName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

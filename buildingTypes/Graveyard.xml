@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Graveyard</name>
+	<position>Undertaker</position>
+	<namingRules>
+		<buildingType>Cemetary</buildingType>
+		<namingConvention>%cityName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Theater</name>
+	<position>Producer</position>
+	<position>Director</position>
+	<position>Director</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Actor</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
+	<position>Minstrel</position>
+	<position>Playwright</position>
+	<position>Composer</position>
+	<position>Composer</position>
+	<position>Poet</position>
+	<position>Poet</position>
+	<position>Stage Manager</position>
+	<position>Stage Manager</position>
+	<houseIncluded>true</houseIncluded>
+</buildingType>

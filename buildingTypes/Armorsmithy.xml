@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Armorsmithy</name>
+	<position>Armorsmith</position>
+	<position>Armorsmith</position>
+	<position>Armorsmith</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Armorsmith</buildingType>
+		<buildingType>Armorsmith</buildingType>
+		<buildingType>Armory</buildingType>
+		
+		<adjective>Ancient</adjective>
+		<adjective>Blue</adjective>
+		<adjective>Brown</adjective>
+		<adjective>Copper</adjective>
+		<adjective>Ebony</adjective>
+		<adjective>Emerald</adjective>
+		<adjective>Golden</adjective>
+		<adjective>Green</adjective>
+		<adjective>Ivory</adjective>
+		<adjective>Orange</adjective>
+		<adjective>Purple</adjective>
+		<adjective>Red</adjective>
+		<adjective>Ruby</adjective>
+		<adjective>Sapphire</adjective>
+		<adjective>Silver</adjective>
+		<adjective>Violet</adjective>
+		<adjective>Yellow</adjective>
+		<adjective>White</adjective>
+		<adjective>Magic</adjective>
+		<adjective>Masterwork</adjective>
+		<adjective>Prestine</adjective>
+		
+		<noun>Greave</noun>
+		<noun>Helm</noun>
+		<noun>Pauldron</noun>
+		<noun>Gauntlet</noun>
+		<noun>Sheild</noun>
+		
+		<namingConvention>%firstName%'s %noun%'s</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%'s</namingConvention>
+		<namingConvention>%firstName%'s Armor</namingConvention>
+		<namingConvention>%firstName%'s %adjective% Armor</namingConvention>
+		<namingConvention>%firstName%'s %buildingType%</namingConvention>
+		<namingConvention>%adjective% %noun%'s &amp; Shit</namingConvention>
+		<namingConvention>%noun%'s &amp; Shit</namingConvention>
+		<namingConvention>%familyName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

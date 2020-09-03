@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Blacksmithy</name>
+	<position>Blacksmith</position>
+	<position>Blacksmith</position>
+	<position>Blacksmith</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Blacksmith</buildingType>
+		<buildingType>Blacksmith</buildingType>
+		<buildingType>Smithy</buildingType>
+		
+		<adjective>Copper</adjective>
+		<adjective>Iron</adjective>
+		<adjective>Bronze</adjective>
+		<adjective>Golden</adjective>
+		<adjective>Mithral</adjective>
+		<adjective>Adamantine</adjective>
+		<adjective>Silver</adjective>
+		<adjective>Magic</adjective>
+		<adjective>Masterwork</adjective>
+		<adjective>Prestine</adjective>
+		<adjective>Flaming</adjective>
+		
+		<noun>Horseshoe</noun>
+		<noun>Tools</noun>
+		<noun>Works</noun>
+		<noun>Hammer</noun>
+		<noun>Forge</noun>
+		
+		<namingConvention>%firstName%'s %noun%</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%</namingConvention>
+		<namingConvention>%firstName%'s %buildingType%</namingConvention>
+		<namingConvention>%adjective% %noun% &amp; Shit</namingConvention>
+		<namingConvention>%noun%'s &amp; Shit</namingConvention>
+		<namingConvention>%familyName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>

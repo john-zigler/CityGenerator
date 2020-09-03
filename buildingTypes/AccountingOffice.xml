@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Accounting Office</name>
+	<position>Accountant</position>
+	<position>Accountant</position>
+	<position>Accountant</position>
+	<houseIncluded>true</houseIncluded>
+</buildingType>

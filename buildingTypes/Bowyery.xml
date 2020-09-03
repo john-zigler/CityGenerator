@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Bowyery</name>
+	<position>Bowyer</position>
+	<position>Bowyer</position>
+	<position>Bowyer</position>
+	<position>Fletcher</position>
+	<position>Fletcher</position>
+	<position>Fletcher</position>
+	<houseIncluded>true</houseIncluded>
+</buildingType>

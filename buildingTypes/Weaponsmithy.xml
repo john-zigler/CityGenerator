@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xml>
+<buildingType>
+	<name>Weaponsmithy</name>
+	<position>Weaponsmith</position>
+	<position>Weaponsmith</position>
+	<position>Weaponsmith</position>
+	<houseIncluded>true</houseIncluded>
+	<namingRules>
+		<buildingType>Weaponsmith</buildingType>
+		<buildingType>Weaponsmith</buildingType>
+		<buildingType>Weaponry</buildingType>
+		
+		<adjective>Rusty</adjective>
+		<adjective>Copper</adjective>
+		<adjective>Ebony</adjective>
+		<adjective>Shitty</adjective>
+		<adjective>Shiny</adjective>
+		<adjective>Red</adjective>
+		<adjective>Fuckin Awsome</adjective>
+		<adjective>Adamantine</adjective>
+		<adjective>Silver</adjective>
+		<adjective>Magic</adjective>
+		<adjective>Masterwork</adjective>
+		<adjective>Prestine</adjective>
+		<adjective>Sharp</adjective>
+		<adjective>Dull</adjective>
+		<adjective>Bloody</adjective>
+		
+		<noun>Warhammer</noun>
+		<noun>Greataxe</noun>
+		<noun>Knife</noun>
+		<noun>Spear</noun>
+		<noun>Sword</noun>
+		<noun>Mace</noun>
+		<noun>Javelin</noun>
+		<noun>Falchion</noun>
+		<noun>Flail</noun>
+		<noun>Glaive</noun>
+		<noun>Halberd</noun>
+		
+		<namingConvention>%firstName%'s %noun%'s</namingConvention>
+		<namingConvention>%firstName%'s %adjective% %noun%'s</namingConvention>
+		<namingConvention>%firstName%'s %adjective% Armor</namingConvention>
+		<namingConvention>%firstName%'s %buildingType%</namingConvention>
+		<namingConvention>%adjective% %noun%'s &amp; Shit</namingConvention>
+		<namingConvention>%noun%'s &amp; Shit</namingConvention>
+		<namingConvention>%familyName% %buildingType%</namingConvention>
+	</namingRules>
+</buildingType>
